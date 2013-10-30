@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MisEjercicios</string>
+    <string name="opcion1">C. Basicos</string>
+    <string name="opcion2">C. Seleccion</string>
+    <string name="opcion3">Opcion 3</string>
+    <string name="hello"></string>
+    <string  name="present">Aplicacion de Ignacio Vives</string>
+    
+    <string name="action_settings">Settings</string>
+    <string name="cabecera">Pulsa el boton de la actividad</string>
+    <string name="title_activity_radiobutton">Ejemplo RadioButton</string>
+    <string name="title_activity_checkbutton">Ejemplo CheckButton</string>
+	<string name="title_activity_saludo">Ejemplo envio informacion</string>
+	<string name="nombre">Escribe tu nombre:</string>
+	
+	<string name="title_activity_listbutton">Ejemplo ListButton</string>
+    <string name="title_activity_spinnerbutton">Ejemplo SpinnerButton</string>
+    <string name="title_activity_listbuttonpantallados">PantallaDos</string>
+    
+    
+</resources>

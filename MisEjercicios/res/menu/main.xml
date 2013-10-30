@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/MenuOpc1"
+        android:title="@string/opcion1"
+        android:icon="@android:drawable/ic_menu_camera" />
+    
+    <item
+        android:id="@+id/MenuOpc2"
+        android:title="@string/opcion2"
+        android:icon="@android:drawable/ic_menu_today" />
+    
+    <item
+        android:id="@+id/MenuOpc3"
+        android:title="@string/opcion3"
+        android:icon="@android:drawable/ic_dialog_info"
+         />
+    
+    
+
+</menu>

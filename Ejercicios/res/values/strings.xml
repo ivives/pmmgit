@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ejercicios</string>
+    <string name="action_settings">Settings</string>
+    <string name="cabecera">Pulsa el boton de la actividad</string>
+    <string name="title_activity_radiobutton">Ejemplo RadioButton</string>
+    <string name="title_activity_checkbutton">Ejemplo CheckButton</string>
+
+</resources>
