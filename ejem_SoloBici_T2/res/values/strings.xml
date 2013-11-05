@@ -10,5 +10,6 @@
     <string name="Salir">Salir</string>
 	<string name="TextoAcercaDe">Esta aplicación ha sido desarrollada para el curso del Cefire 
 	    de Cheste sobre programación de dispositivos móviles mediante Android.</string>
+	<string name ="action_settings"> </string>
 
 </resources>
