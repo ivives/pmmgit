@@ -22,6 +22,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity android:name="com.example.ejem_solobici_t2.Juego"
+            android:label="Juego..." >
+        </activity>
+        <activity android:name="com.example.ejem_solobici_t2.Grafico"
+            android:label="Grafico..." >
+        </activity>
+         <activity android:name="com.example.ejem_solobici_t2.VistaJuego"
+            android:label="VistaJuego..." >
+        </activity>
     </application>
 
 </manifest>
