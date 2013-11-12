@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
     
-    <juego.solobici.VistaJuego
+    <com.example.ejem_solobici_t2.VistaJuego
         android:id="@+id/VistaJuego"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

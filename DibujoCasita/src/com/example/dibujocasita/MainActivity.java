@@ -7,6 +7,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
+import android.graphics.Path.FillType;
+import android.graphics.Path;
 import android.view.Menu;
 import android.view.View;
 
@@ -73,7 +75,15 @@ public class MainActivity extends Activity {
 			canvas.drawLine(335, 200, 365, 200, pincel);
 			
 			
+			Path path = new Path();
+			path.setFillType(FillType.EVEN_ODD);
 			
+			path.moveTo(120, 280);
+			path.lineTo(380, 280);
+			path.lineTo(250, 140);
+			path.lineTo(120, 280);
+			path.close();
+			canvas.drawPath(path, pincel);
 			
 					
 		}
