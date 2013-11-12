@@ -1,6 +1,5 @@
 package net.sgoliver;
 
-
 public class Titular 
 {
 	private String titulo;
