@@ -26,12 +26,27 @@ public class MainActivity extends Activity {
 		lstOpciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
   			public void onItemClick(AdapterView<?> parent, android.view.View v, int position, long id){
   				
-  				Intent intent = new Intent(MainActivity.this, Pantallados.class);
-  				      				
+  				if (position == 0){
   				
-				
+  				Intent intent = new Intent(MainActivity.this, DibujaCirculo.class);
+  				 								
 				startActivity(intent);
-  			}
+  				}
+  				
+  				if (position == 1){
+  	  				
+  	  				Intent intent = new Intent(MainActivity.this, DibujaCirculo.class);
+  	  				 								
+  					startActivity(intent);
+  	  				}
+  				
+  				if (position == 2){
+  	  				
+  	  				Intent intent = new Intent(MainActivity.this, DibujaCirculo.class);
+  	  				 								
+  					startActivity(intent);
+  	  				}
+  			}	
 
 			      			
   		});

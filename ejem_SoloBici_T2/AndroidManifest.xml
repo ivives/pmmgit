@@ -31,6 +31,9 @@
         </activity><activity android:name="com.example.ejem_solobici_t2.VistaJuego" 
             android:label="VistaJuego...">
         </activity>
+        <activity android:name="com.example.ejem_solobici_t2.Preferencias"
+            android:label="Preferencias" >
+        </activity>
     </application>
 
 </manifest>

@@ -23,8 +23,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.dibujafiguras.Pantallados"
-            android:label="@string/title_activity_pantalla_dos" >
+            android:name="com.example.dibujafiguras.DibujaCirculo"
+            android:label="@string/title_activity_dibuja_circulo" >
         </activity>
     </application>
 
