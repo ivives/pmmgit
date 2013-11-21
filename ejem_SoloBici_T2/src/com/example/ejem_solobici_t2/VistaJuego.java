@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.View;
 
 public class VistaJuego extends View{
@@ -119,6 +120,20 @@ public class VistaJuego extends View{
 				actualizaMovimiento();
 			}
 		}
+	}
+	
+	public boolean onKeyDown (int codigoTecla, KeyEvent evento) {
+		super.onKeyDown(codigoTecla, evento);
+		//procesamos la pulsacion
+		boolean pulsacion = true;
+		switch (codigoTecla){
+			case KeyEvent.KEYCODE_DPAD_UP:
+				aceleracionBici =+ PASO_ACELERACION_BICI;
+				break;
+		}
+		
+		return pulsacion;
+		
 	}
 	
 	
