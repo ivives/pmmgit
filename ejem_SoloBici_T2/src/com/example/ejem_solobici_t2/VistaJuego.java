@@ -2,10 +2,12 @@ package com.example.ejem_solobici_t2;
 
 import java.util.List;
 import java.util.Vector;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
+import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.AttributeSet;
@@ -213,5 +215,27 @@ public class VistaJuego extends View implements SensorEventListener{
 		miSensorManager.registerListener(this, sensorOrientacion, SensorManager.SENSOR_DELAY_UI);
 	}
 	
+	@Override
+	public void onAccuracyChanged(Sensor sensor, int accuracy) {
+		// TODO Auto-generated method stub
+		
+	}
 	
-}
+	
+	
+	private boolean hayValorInicial = false;
+	private float valorInicial;
+
+	@Override
+	public void onSensorChanged(SensorEvent evento) {
+		float valor = evento.values[1];
+		if (!hayValorInicial){
+			valorInicial = valor;
+			hayValorInicial = true;
+		}
+		giroBici = (int) (valor - valorInicial)/3;
+	}
+	
+}	
+	
+
