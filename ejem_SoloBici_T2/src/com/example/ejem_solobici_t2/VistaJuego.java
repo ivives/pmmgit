@@ -1,14 +1,19 @@
 package com.example.ejem_solobici_t2;
 
+import java.util.List;
 import java.util.Vector;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.hardware.Sensor;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 
-public class VistaJuego extends View{
+public class VistaJuego extends View implements SensorEventListener{
 	// COCHES  //
 	private Vector<Grafico> Coches; //Vector con los coches
 	private int numCoches = 5;		//Numero inicial de coches
@@ -130,10 +135,82 @@ public class VistaJuego extends View{
 			case KeyEvent.KEYCODE_DPAD_UP:
 				aceleracionBici =+ PASO_ACELERACION_BICI;
 				break;
+			case KeyEvent.KEYCODE_DPAD_LEFT:
+				giroBici =- PASO_GIRO_BICI;
+				break;
+			case KeyEvent.KEYCODE_DPAD_RIGHT:
+				giroBici =+ PASO_GIRO_BICI;
+				break;
+			case KeyEvent.KEYCODE_DPAD_CENTER:
+			case KeyEvent.KEYCODE_ENTER:
+				//lanzarRueda();
+				break;
+			default:
+				//si estamos aqui no hemos pulsado nada que nos interese
+				pulsacion = false;
+				break;
 		}
 		
 		return pulsacion;
 		
+	}
+	
+	
+	//PANTALLA TACTIL //
+	//las variables mX y mY se utilizaran para recortar
+	//las coordenadas del ultimo evento
+	private float mX = 0, mY = 0;
+	private boolean disparo = false;
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent evento) {
+		super.onTouchEvent(evento);
+		//obtenemos la posicio de la pulsacion
+		float x = evento.getX();
+		float y = evento.getY();
+		switch (evento.getAction()){
+		//si comienza una pulsacion (ACTION_DOWN) activamos la variable disparo
+		case MotionEvent.ACTION_DOWN:
+			disparo = true;
+			break;
+		//comprobamos si la pulsacion es continuada con un desplazamiento horizontal o vertical
+		//en caso de ser asi, desactivamos disparo porque se tratara de un movimiento
+		//en llugar de un disparo
+		case MotionEvent.ACTION_MOVE:
+			float dx = Math.abs(x-mX);
+			float dy = Math.abs(y-mY);
+			if (dy < 6 && dx > 6) //un desplazamiento del dedo horizontal hace girar la bici
+			{
+				giroBici = Math.round((x-mX)/2);
+				disparo = false;
+			} else if (dx < 6 && dy > 6) //un desplazamiento vertical produce aceleracion
+				{
+					aceleracionBici = Math.round((mY-y)/25);
+					disparo = false;
+				
+				}
+			break;
+		//si se levanta el dedo (ACTION_UP) sin haberse producido desplazamiento horizontal o vertical
+		//disparo estara activado y lo que hacemos es disparar
+		case MotionEvent.ACTION_UP:
+			giroBici = 0;
+			aceleracionBici = 0;
+			if (disparo){
+				//ActivarRueda();
+			}
+			break;
+		}
+		mX = x;
+		mY = y;
+		return true;
+	}
+	
+	// REGISTRO DE SENSORES
+	SensorManager miSensorManager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
+	List<Sensor> listaSensores = miSensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
+	if (!listaSensores.isEmpty()){
+		Sensor sensorOrientacion = listaSensores.get(0);
+		miSensorManager.registerListener(this, sensorOrientacion, SensorManager.SENSOR_DELAY_UI);
 	}
 	
 	
