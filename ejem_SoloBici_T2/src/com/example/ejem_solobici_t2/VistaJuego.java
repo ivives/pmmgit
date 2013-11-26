@@ -46,6 +46,12 @@ public class VistaJuego extends View implements SensorEventListener{
 	//Momento en el que realizo el ultomo proceso
 	private long ultimoProceso = 0;
 	
+	//controlar si la aplicacion esta en segundo plano
+	private boolean corriendo = false;
+	//controlar si la aplicacion esta en pausa
+	private boolean pausa;
+	
+	
 	public VistaJuego(Context contexto, AttributeSet atributos) {
 		super (contexto, atributos);
 		Drawable graficoBici, graficoCoche, graficoRueda;
@@ -84,6 +90,8 @@ public class VistaJuego extends View implements SensorEventListener{
 			  rueda = new Grafico(this, graficoRueda);
 			  ruedaActiva = false;
 				
+			//CONTROL DEL HILA DEL JUEGO
+			  corriendo = true;
 	}
 
 	//Al comenzar y dibujar por primera vez la pantalla de juego
@@ -154,18 +162,49 @@ public class VistaJuego extends View implements SensorEventListener{
 			}else {
 				for (int i=0; i < Coches.size(); i++){
 					if (rueda.verificacionColision(Coches.elementAt(i))){
-						destruyeCoche();
+						destruyeCoche(i);
 					}
 				}
 			}
 		}
+	}
+	
+	private void destruyeCoche(int i) {
+		Coches.remove(i);
+		ruedaActiva = false;
 		
 	}
+	
+	private void lanzarRueda() {
+		rueda.setPosX(bici.getPosX() + bici.getAncho()/2 - rueda.getAncho()/2);
+		rueda.setPosY(bici.getPosY() + bici.getAlto()/2 - rueda.getAlto()/2);
+		rueda.setAngulo(bici.getAngulo());
+		rueda.setIncX(Math.cos(Math.toRadians(rueda.getAngulo())) + VELOCIDAD_RUEDA);
+		rueda.setIncY(Math.sin(Math.toRadians(rueda.getAngulo())) + VELOCIDAD_RUEDA);
+		distanciaRueda = (int)Math.min(
+				this.getWidth() / Math.abs(rueda.getIncX()),
+				this.getHeight() / Math.abs(rueda.getIncY())) -2;
+		ruedaActiva = true;
+	}
+
+	public HiloJuego getHilo(){
+		return hiloJuego;
+	}
+	
+	public void setCorriendo(boolean corriendo){
+		this.corriendo = corriendo;
+	}
+	
+	public void setPausa(boolean pausa){
+		this.pausa = pausa;
+		
+	}
+	
 	
 	private class HiloJuego extends Thread {
 		@Override
 		public void run() {
-			while (true) {
+			while (corriendo) {
 				actualizaMovimiento();
 			}
 		}
@@ -187,7 +226,7 @@ public class VistaJuego extends View implements SensorEventListener{
 				break;
 			case KeyEvent.KEYCODE_DPAD_CENTER:
 			case KeyEvent.KEYCODE_ENTER:
-				//lanzarRueda();
+				lanzarRueda();
 				break;
 			default:
 				//si estamos aqui no hemos pulsado nada que nos interese
