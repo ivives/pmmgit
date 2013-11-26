@@ -1,6 +1,5 @@
 package com.example.dibujafiguras;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,12 +9,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class DibujaCirculo extends Activity{
+public class DibujaCuadrado extends Activity{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_dibujacirculo);
+		setContentView(R.layout.activity_dibujacuadrado);
 		
 		final Button btnDibuja = (Button)findViewById(R.id.BotonDibuja);
 		final EditText txtCoorX = (EditText)findViewById(R.id.TxtCoorX);
@@ -29,7 +28,7 @@ public class DibujaCirculo extends Activity{
 			@Override
 			public void onClick(View v) {
 				//Creamos el intent
-				Intent intent = new Intent(DibujaCirculo.this, Circulo.class);
+				Intent intent = new Intent(DibujaCuadrado.this, Cuadrado.class);
 							
 				//Creamos la informacion a pasar entre actividades
 				Bundle b = new Bundle();

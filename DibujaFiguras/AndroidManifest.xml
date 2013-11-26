@@ -26,6 +26,23 @@
             android:name="com.example.dibujafiguras.DibujaCirculo"
             android:label="@string/title_activity_dibuja_circulo" >
         </activity>
+        <activity
+            android:name="com.example.dibujafiguras.Circulo"
+            android:label="@string/title_activity_circulo" >
+        </activity>
+        <activity
+            android:name="com.example.dibujafiguras.DibujaCuadrado"
+            android:label="@string/title_activity_dibuja_cuadrado" >
+        </activity>
+        <activity
+            android:name="com.example.dibujafiguras.Cuadrado"
+            android:label="@string/title_activity_cuadrado" >
+        </activity>
+        <activity
+            android:name="com.example.dibujafiguras.Ovalo"
+            android:label="@string/title_activity_ovalo" >
+        </activity>
+        
     </application>
 
 </manifest>

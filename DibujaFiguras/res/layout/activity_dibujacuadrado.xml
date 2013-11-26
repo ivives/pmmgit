@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView 
+        android:id="@+id/lblCoorX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/coorX"  />
+    
+    <EditText 
+        android:id="@+id/TxtCoorX"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text=""/>
+
+    <TextView 
+        android:id="@+id/lblCoorY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/coorY"  />
+    
+    <EditText 
+        android:id="@+id/TxtCoorY"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text=""/>
+    
+    <TextView 
+        android:id="@+id/lblRadio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/radio"  />
+    
+    
+    <EditText 
+        android:id="@+id/TxtRadio"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text=""/>
+    
+    <Button 
+        android:id="@+id/BotonDibuja"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dibuja"/>
+    
+
+</LinearLayout>

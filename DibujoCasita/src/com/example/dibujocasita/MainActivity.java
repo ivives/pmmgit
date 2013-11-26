@@ -38,11 +38,23 @@ public class MainActivity extends Activity {
 			pincel.setStyle(Style.STROKE);
 			canvas.drawRect(100, 350, 400, 550, pincel);
 			
+//			pincel.setColor(Color.DKGRAY);
+//			pincel.setStrokeWidth(15);
+//			pincel.setStyle(Style.STROKE);
+//			canvas.drawLine(100, 350, 253, 150, pincel);
+//			canvas.drawLine(400, 350, 247, 150, pincel);
+			
+			
+			Path path = new Path();
+			path.setFillType(FillType.EVEN_ODD);
 			pincel.setColor(Color.DKGRAY);
 			pincel.setStrokeWidth(15);
-			pincel.setStyle(Style.STROKE);
-			canvas.drawLine(100, 350, 253, 150, pincel);
-			canvas.drawLine(400, 350, 247, 150, pincel);
+			path.moveTo(100, 350);
+			path.lineTo(250, 150);
+			path.lineTo(400, 350);
+			path.lineTo(100, 350);
+			path.close();
+			canvas.drawPath(path, pincel);
 			
 			
 			pincel.setColor(Color.RED);
@@ -67,23 +79,25 @@ public class MainActivity extends Activity {
 			pincel.setStyle(Style.FILL);
 			canvas.drawCircle(250, 260, 25, pincel);
 			
+//			pincel.setColor(Color.DKGRAY);
+//			pincel.setStrokeWidth(10);
+//			pincel.setStyle(Style.STROKE);
+//			canvas.drawLine(360, 300, 360, 200, pincel);
+//			canvas.drawLine(340, 270, 340, 200, pincel);
+//			canvas.drawLine(335, 200, 365, 200, pincel);
+			
+			Path path2 = new Path();
+			path.setFillType(FillType.EVEN_ODD);
 			pincel.setColor(Color.DKGRAY);
 			pincel.setStrokeWidth(10);
-			pincel.setStyle(Style.STROKE);
-			canvas.drawLine(360, 300, 360, 200, pincel);
-			canvas.drawLine(340, 270, 340, 200, pincel);
-			canvas.drawLine(335, 200, 365, 200, pincel);
+			path2.moveTo(360, 300);
+			path2.lineTo(360, 200);
+			path2.lineTo(340, 200);
+			path2.lineTo(340, 270);
+			path2.lineTo(360, 300);
+			path2.close();
+			canvas.drawPath(path2, pincel);
 			
-			
-			Path path = new Path();
-			path.setFillType(FillType.EVEN_ODD);
-			
-			path.moveTo(120, 280);
-			path.lineTo(380, 280);
-			path.lineTo(250, 140);
-			path.lineTo(120, 280);
-			path.close();
-			canvas.drawPath(path, pincel);
 			
 					
 		}

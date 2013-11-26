@@ -5,7 +5,11 @@ import java.util.Vector;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint.Style;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RectShape;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -27,6 +31,12 @@ public class VistaJuego extends View implements SensorEventListener{
 	private float aceleracionBici;	//Aumento de la velocidad de la bici
 	private static final int PASO_GIRO_BICI = 5;
 	private static final float PASO_ACELERACION_BICI = 0.5f;
+	
+	// RUEDA //
+	private Grafico rueda;
+	private static int VELOCIDAD_RUEDA = 12;
+	private boolean ruedaActiva;
+	private int distanciaRueda;
 		
 	// THREAD Y TIEMPO  //
 	//Hilo encargado de procesar el tiempoe
@@ -41,7 +51,7 @@ public class VistaJuego extends View implements SensorEventListener{
 		Drawable graficoBici, graficoCoche, graficoRueda;
 		///Obtenemos la imagen/recurso del coche
 		graficoCoche = contexto.getResources().getDrawable(R.drawable.coche);
-		
+		graficoRueda = contexto.getResources().getDrawable(R.drawable.rueda);
 	
 		//Creamos un vector para contener todos los coches que iran por la pantalla
 		//y lo rellenamos con graficos de coches
@@ -62,6 +72,18 @@ public class VistaJuego extends View implements SensorEventListener{
 //			bici.setPosX(50);
 //			bici.setPosY(100);
 		
+			// RUEDA 
+			//DIBUJO RUEDA
+			  ShapeDrawable dRueda = new ShapeDrawable(new RectShape());
+			  dRueda.getPaint().setColor(Color.WHITE);
+			  dRueda.getPaint().setStyle(Style.STROKE);
+			  dRueda.setIntrinsicWidth(15);
+			  dRueda.setIntrinsicHeight(3);
+			  graficoRueda = dRueda;
+			  
+			  rueda = new Grafico(this, graficoRueda);
+			  ruedaActiva = false;
+				
 	}
 
 	//Al comenzar y dibujar por primera vez la pantalla de juego
@@ -93,6 +115,10 @@ public class VistaJuego extends View implements SensorEventListener{
 		}
 		
 		bici.dibujaGrafico(canvas);
+		
+		//dibujamos la rueda si lo indica la variable ruedaActiva
+		if (ruedaActiva)
+			rueda.dibujaGrafico(canvas);
 	}
 	
 	protected synchronized void actualizaMovimiento() {
@@ -118,6 +144,22 @@ public class VistaJuego extends View implements SensorEventListener{
 			coche.incrementaPos();
 		}
 		ultimoProceso = ahora;
+		
+		//MOvemos la rueda
+		if(ruedaActiva){
+			rueda.incrementaPos();
+			distanciaRueda--;
+			if (distanciaRueda < 0){
+				ruedaActiva = false;
+			}else {
+				for (int i=0; i < Coches.size(); i++){
+					if (rueda.verificacionColision(Coches.elementAt(i))){
+						destruyeCoche();
+					}
+				}
+			}
+		}
+		
 	}
 	
 	private class HiloJuego extends Thread {
@@ -167,7 +209,7 @@ public class VistaJuego extends View implements SensorEventListener{
 	@Override
 	public boolean onTouchEvent(MotionEvent evento) {
 		super.onTouchEvent(evento);
-		//obtenemos la posicio de la pulsacion
+		//obtenemos la posicion de la pulsacion
 		float x = evento.getX();
 		float y = evento.getY();
 		switch (evento.getAction()){
@@ -177,7 +219,7 @@ public class VistaJuego extends View implements SensorEventListener{
 			break;
 		//comprobamos si la pulsacion es continuada con un desplazamiento horizontal o vertical
 		//en caso de ser asi, desactivamos disparo porque se tratara de un movimiento
-		//en llugar de un disparo
+		//en lugar de un disparo
 		case MotionEvent.ACTION_MOVE:
 			float dx = Math.abs(x-mX);
 			float dy = Math.abs(y-mY);
@@ -209,12 +251,13 @@ public class VistaJuego extends View implements SensorEventListener{
 	
 	// REGISTRO DE SENSORES
 	SensorManager miSensorManager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
-	List<Sensor> listaSensores = miSensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
+	@SuppressWarnings("deprecation")
+	List<Sensor> listaSensores = miSensorManager.getSensorList(Sensor.TYPE_ORIENTATION);{
 	if (!listaSensores.isEmpty()){
 		Sensor sensorOrientacion = listaSensores.get(0);
 		miSensorManager.registerListener(this, sensorOrientacion, SensorManager.SENSOR_DELAY_UI);
 	}
-	
+	}
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 		// TODO Auto-generated method stub
