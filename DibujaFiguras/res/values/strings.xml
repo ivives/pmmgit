@@ -13,5 +13,6 @@
     <string name="coorX">Coordenada X</string>
     <string name="coorY">Coordenada Y</string>
     <string name="radio">Radio</string>
-
+	 <string name="coorX2">Coordenada X2</string>
+    <string name="coorY2">Coordenada Y2</string>
 </resources>

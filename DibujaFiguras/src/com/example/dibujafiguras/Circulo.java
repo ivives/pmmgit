@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
 import android.graphics.Path.FillType;
 import android.os.Bundle;
@@ -34,8 +35,10 @@ public class Circulo extends Activity{
 			
 			Float x = Float.parseFloat(b.getString("CoordenadaX"));
 			Float y = Float.parseFloat(b.getString("CoordenadaY"));
-			Float r = Float.parseFloat(b.getString("Radio"));
+			Double r = Double.parseDouble(b.getString("Radio"));
 			
+			double area = (r * (Math.PI * Math.PI));
+			String resultado = String.valueOf(area );
 			
 			//Dentro de este metodo utilizamos los metodos para dibujar
 			
@@ -48,10 +51,21 @@ public class Circulo extends Activity{
 			//Establecemos el estilo del trazo
 			pincel.setStyle(Style.STROKE);
 			canvas.drawCircle(x, y, r, pincel);
+			
+			pincel.setStrokeWidth(2);
+			pincel.setColor(Color.RED);
+			pincel.setTextSize(20);
+			pincel.setTextAlign(Align.CENTER);
+			canvas.drawText(resultado , 200, 300, pincel);
 					
 
 		}
+		
+		float area = (r * (Math.PI * Math.PI));
+		String resultado = String.valueOf(area );
+		
 	}
+	
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

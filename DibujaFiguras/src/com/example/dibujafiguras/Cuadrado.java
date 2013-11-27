@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
 import android.os.Bundle;
 import android.view.Menu;
@@ -30,10 +31,10 @@ public class Cuadrado extends Activity{
 		@Override
 		protected void onDraw (Canvas canvas){
 			
-			Float x = Float.parseFloat(b.getString("CoordenadaX"));
-			Float y = Float.parseFloat(b.getString("CoordenadaY"));
-			Float r = Float.parseFloat(b.getString("Radio"));
-			
+			Float x1 = Float.parseFloat(b.getString("CoordenadaX"));
+			Float y1 = Float.parseFloat(b.getString("CoordenadaY"));
+			Float x2 = Float.parseFloat(b.getString("CoordenadaX2"));
+			Float y2 = Float.parseFloat(b.getString("CoordenadaY2"));
 			
 			//Dentro de este metodo utilizamos los metodos para dibujar
 			
@@ -45,9 +46,13 @@ public class Cuadrado extends Activity{
 			pincel.setStrokeWidth(10);
 			//Establecemos el estilo del trazo
 			pincel.setStyle(Style.STROKE);
-			canvas.drawCircle(x, y, r, pincel);
+			canvas.drawRect(x1, y1, x2, y2, pincel);
 					
-
+			pincel.setStrokeWidth(2);
+			pincel.setColor(Color.RED);
+			pincel.setTextSize(20);
+			pincel.setTextAlign(Align.CENTER);
+			canvas.drawText("hola", 200, 300, pincel);
 		}
 	}
 	

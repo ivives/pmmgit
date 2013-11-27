@@ -39,6 +39,10 @@
             android:label="@string/title_activity_cuadrado" >
         </activity>
         <activity
+            android:name="com.example.dibujafiguras.DibujaOvalo"
+            android:label="@string/title_activity_dibuja_ovalo" >
+        </activity>
+        <activity
             android:name="com.example.dibujafiguras.Ovalo"
             android:label="@string/title_activity_ovalo" >
         </activity>

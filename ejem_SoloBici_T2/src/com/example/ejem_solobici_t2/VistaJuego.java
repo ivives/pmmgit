@@ -153,7 +153,7 @@ public class VistaJuego extends View implements SensorEventListener{
 		}
 		ultimoProceso = ahora;
 		
-		//MOvemos la rueda
+		//Movemos la rueda
 		if(ruedaActiva){
 			rueda.incrementaPos();
 			distanciaRueda--;
@@ -279,7 +279,7 @@ public class VistaJuego extends View implements SensorEventListener{
 			giroBici = 0;
 			aceleracionBici = 0;
 			if (disparo){
-				//ActivarRueda();
+				lanzarRueda();
 			}
 			break;
 		}

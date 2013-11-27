@@ -19,7 +19,8 @@ public class DibujaCuadrado extends Activity{
 		final Button btnDibuja = (Button)findViewById(R.id.BotonDibuja);
 		final EditText txtCoorX = (EditText)findViewById(R.id.TxtCoorX);
 		final EditText txtCoorY = (EditText)findViewById(R.id.TxtCoorY);
-		final EditText txtRadio = (EditText)findViewById(R.id.TxtRadio);
+		final EditText txtCoorX2 = (EditText)findViewById(R.id.TxtCoorX2);
+		final EditText txtCoorY2 = (EditText)findViewById(R.id.TxtCoorY2);
 		
 		
 		//Implementamos el evento "click" del boton
@@ -34,7 +35,8 @@ public class DibujaCuadrado extends Activity{
 				Bundle b = new Bundle();
 				b.putString("CoordenadaX", txtCoorX.getText().toString());
 				b.putString("CoordenadaY", txtCoorY.getText().toString());
-				b.putString("Radio", txtRadio.getText().toString());
+				b.putString("CoordenadaX2", txtCoorX2.getText().toString());
+				b.putString("CoordenadaY2", txtCoorY2.getText().toString());
 							
 				//Añadimos la informacion al intent
 				intent.putExtras(b);

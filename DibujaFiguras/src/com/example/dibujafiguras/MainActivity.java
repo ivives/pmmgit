@@ -35,14 +35,14 @@ public class MainActivity extends Activity {
   				
   				if (position == 1){
   	  				
-  	  				Intent intent = new Intent(MainActivity.this, DibujaCirculo.class);
+  	  				Intent intent = new Intent(MainActivity.this, DibujaCuadrado.class);
   	  				 								
   					startActivity(intent);
   	  				}
   				
   				if (position == 2){
   	  				
-  	  				Intent intent = new Intent(MainActivity.this, DibujaCirculo.class);
+  	  				Intent intent = new Intent(MainActivity.this, DibujaOvalo.class);
   	  				 								
   					startActivity(intent);
   	  				}

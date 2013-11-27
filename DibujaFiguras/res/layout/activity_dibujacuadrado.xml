@@ -28,19 +28,30 @@
         android:layout_height="wrap_content"
         android:text=""/>
     
-    <TextView 
-        android:id="@+id/lblRadio"
+     <TextView 
+        android:id="@+id/lblCoorX2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/radio"  />
-    
+        android:text="@string/coorX2"  />
     
     <EditText 
-        android:id="@+id/TxtRadio"
+        android:id="@+id/TxtCoorX2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text=""/>
+
+    <TextView 
+        android:id="@+id/lblCoorY2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/coorY2"  />
     
+    <EditText 
+        android:id="@+id/TxtCoorY2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text=""/>
+            
     <Button 
         android:id="@+id/BotonDibuja"
         android:layout_width="wrap_content"
