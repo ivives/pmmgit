@@ -37,7 +37,7 @@ public class Cuadrado extends Activity{
 			Float y2 = Float.parseFloat(b.getString("CoordenadaY2"));
 			
 			float area = ((x2 - x1) * (y2 - y1));
-			String areaText = String.valueOf(area );
+			String areaText = String.valueOf(area);
 			String resultado = "El area del cuadrado es: " + areaText ;
 			
 			//Dentro de este metodo utilizamos los metodos para dibujar

@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 public class MainActivity extends Activity {
 	
-	final String[] figuras = new String[]{"Circulo", "Cuadrado", "Ovalo"};
+	final String[] figuras = new String[]{"Circulo", "Cuadrado", "Ovalo", "Triangulo"};
 	
 
 	@Override
@@ -43,6 +43,13 @@ public class MainActivity extends Activity {
   				if (position == 2){
   	  				
   	  				Intent intent = new Intent(MainActivity.this, DibujaOvalo.class);
+  	  				 								
+  					startActivity(intent);
+  	  				}
+  				
+  				if (position == 3){
+  	  				
+  	  				Intent intent = new Intent(MainActivity.this, DibujaTriangulo.class);
   	  				 								
   					startActivity(intent);
   	  				}

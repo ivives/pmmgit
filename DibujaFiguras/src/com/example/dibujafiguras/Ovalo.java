@@ -5,7 +5,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
+import android.graphics.RectF;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -29,9 +31,14 @@ Bundle b;
 		@Override
 		protected void onDraw (Canvas canvas){
 			
-			Float x = Float.parseFloat(b.getString("CoordenadaX"));
-			Float y = Float.parseFloat(b.getString("CoordenadaY"));
-			Float r = Float.parseFloat(b.getString("Radio"));
+			Float x1 = Float.parseFloat(b.getString("CoordenadaX"));
+			Float y1 = Float.parseFloat(b.getString("CoordenadaY"));
+			Float x2 = Float.parseFloat(b.getString("CoordenadaX2"));
+			Float y2 = Float.parseFloat(b.getString("CoordenadaY2"));
+			
+			float area = (float) (((x2 - x1)/2) * ((y2 - y1)/2) * Math.PI);
+			String areaText = String.valueOf(area);
+			String resultado = "El area del ovalo es: " + areaText;
 			
 			
 			//Dentro de este metodo utilizamos los metodos para dibujar
@@ -44,7 +51,17 @@ Bundle b;
 			pincel.setStrokeWidth(10);
 			//Establecemos el estilo del trazo
 			pincel.setStyle(Style.STROKE);
-			canvas.drawCircle(x, y, r, pincel);
+			canvas.drawOval(new RectF(x1, y1, x2, y2), pincel);
+			
+			
+			int b = canvas.getHeight();
+			int a = canvas.getWidth();
+			
+			pincel.setStrokeWidth(1);
+			pincel.setColor(Color.RED);
+			pincel.setTextSize(20);
+			pincel.setTextAlign(Align.CENTER);
+			canvas.drawText(resultado, a/2, b-50, pincel);
 					
 
 		}

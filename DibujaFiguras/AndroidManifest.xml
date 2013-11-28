@@ -46,6 +46,14 @@
             android:name="com.example.dibujafiguras.Ovalo"
             android:label="@string/title_activity_ovalo" >
         </activity>
+        <activity
+            android:name="com.example.dibujafiguras.DibujaTriangulo"
+            android:label="@string/title_activity_dibuja_triangulo" >
+        </activity>
+        <activity
+            android:name="com.example.dibujafiguras.Triangulo"
+            android:label="@string/title_activity_triangulo" >
+        </activity>
         
     </application>
 

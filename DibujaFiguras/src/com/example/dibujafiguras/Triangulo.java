@@ -13,9 +13,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
+public class Triangulo extends Activity{
 
-public class Circulo extends Activity{
-	
 	Bundle b;
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,25 +32,43 @@ public class Circulo extends Activity{
 		@Override
 		protected void onDraw (Canvas canvas){
 			
-			Float x = Float.parseFloat(b.getString("CoordenadaX"));
-			Float y = Float.parseFloat(b.getString("CoordenadaY"));
-			Float r = Float.parseFloat(b.getString("Radio"));
+			Float x1 = Float.parseFloat(b.getString("CoordenadaX"));
+			Float y1 = Float.parseFloat(b.getString("CoordenadaY"));
+			Float x2 = Float.parseFloat(b.getString("CoordenadaX2"));
+			Float y2 = Float.parseFloat(b.getString("CoordenadaY2"));
+			Float x3 = Float.parseFloat(b.getString("CoordenadaX3"));
+			Float y3 = Float.parseFloat(b.getString("CoordenadaY3"));
 			
-			float area = (float) ((r * r) * Math.PI);
+			float abx = x2 - x1;
+			float aby = y2 - y1;
+			float acx = x3 - x1;
+			float acy = y3 - y1;
+			float nabx = y2 - y1;
+			float naby = -(x2 - x1);
+			
+			
+			float area = ((nabx * acx) + (naby * acy))/2;
 			String areaText = String.valueOf(area);
-			String resultado = "El area del circulo es: " + areaText;
+			String resultado = "El area del triangulo es: " + areaText;
 			
 			//Dentro de este metodo utilizamos los metodos para dibujar
 			
 			//Creamos un pincel con el que elegir color, trazo, estilo, etc.
 			Paint pincel = new Paint();
+			Path path = new Path();
+			path.setFillType(FillType.EVEN_ODD);
 			//Seleccionamos el color azul para el pincel
 			pincel.setColor(Color.BLUE);
 			//Establecemos el grosor del pincel
 			pincel.setStrokeWidth(10);
 			//Establecemos el estilo del trazo
 			pincel.setStyle(Style.STROKE);
-			canvas.drawCircle(x, y, r, pincel);
+			path.moveTo(x1, y1);
+			path.lineTo(x2, y2);
+			path.lineTo(x3, y3);
+			path.lineTo(x1, y1);
+			path.close();
+			canvas.drawPath(path, pincel);
 			
 			int b = canvas.getHeight();
 			int a = canvas.getWidth();
@@ -61,13 +78,11 @@ public class Circulo extends Activity{
 			pincel.setTextSize(20);
 			pincel.setTextAlign(Align.CENTER);
 			canvas.drawText(resultado, a/2, b-50, pincel);
-				
-
+			
+			
+			
 		}
-		
-		
 	}
-	
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -77,6 +92,3 @@ public class Circulo extends Activity{
 	}
 
 }
-
-
-
