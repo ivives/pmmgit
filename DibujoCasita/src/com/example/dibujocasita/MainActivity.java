@@ -38,12 +38,6 @@ public class MainActivity extends Activity {
 			pincel.setStyle(Style.STROKE);
 			canvas.drawRect(100, 350, 400, 550, pincel);
 			
-//			pincel.setColor(Color.DKGRAY);
-//			pincel.setStrokeWidth(15);
-//			pincel.setStyle(Style.STROKE);
-//			canvas.drawLine(100, 350, 253, 150, pincel);
-//			canvas.drawLine(400, 350, 247, 150, pincel);
-			
 			
 			Path path = new Path();
 			path.setFillType(FillType.EVEN_ODD);
@@ -79,12 +73,6 @@ public class MainActivity extends Activity {
 			pincel.setStyle(Style.FILL);
 			canvas.drawCircle(250, 260, 25, pincel);
 			
-//			pincel.setColor(Color.DKGRAY);
-//			pincel.setStrokeWidth(10);
-//			pincel.setStyle(Style.STROKE);
-//			canvas.drawLine(360, 300, 360, 200, pincel);
-//			canvas.drawLine(340, 270, 340, 200, pincel);
-//			canvas.drawLine(335, 200, 365, 200, pincel);
 			
 			Path path2 = new Path();
 			path.setFillType(FillType.EVEN_ODD);

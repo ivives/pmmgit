@@ -35,10 +35,11 @@ public class Circulo extends Activity{
 			
 			Float x = Float.parseFloat(b.getString("CoordenadaX"));
 			Float y = Float.parseFloat(b.getString("CoordenadaY"));
-			Double r = Double.parseDouble(b.getString("Radio"));
+			Float r = Float.parseFloat(b.getString("Radio"));
 			
-			double area = (r * (Math.PI * Math.PI));
-			String resultado = String.valueOf(area );
+			float area = (float) ((r * r) * Math.PI);
+			String areaText = String.valueOf(area );
+			String resultado = "El area del circulo es: " + areaText ;
 			
 			//Dentro de este metodo utilizamos los metodos para dibujar
 			
@@ -52,17 +53,18 @@ public class Circulo extends Activity{
 			pincel.setStyle(Style.STROKE);
 			canvas.drawCircle(x, y, r, pincel);
 			
-			pincel.setStrokeWidth(2);
+			int b = canvas.getHeight();
+			int a = canvas.getWidth();
+			
+			pincel.setStrokeWidth(1);
 			pincel.setColor(Color.RED);
 			pincel.setTextSize(20);
 			pincel.setTextAlign(Align.CENTER);
-			canvas.drawText(resultado , 200, 300, pincel);
-					
+			canvas.drawText(resultado, a/2, b-50, pincel);
+				
 
 		}
 		
-		float area = (r * (Math.PI * Math.PI));
-		String resultado = String.valueOf(area );
 		
 	}
 	

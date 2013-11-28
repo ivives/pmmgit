@@ -80,12 +80,12 @@ public class VistaJuego extends View implements SensorEventListener{
 		
 			// RUEDA 
 			//DIBUJO RUEDA
-			  ShapeDrawable dRueda = new ShapeDrawable(new RectShape());
-			  dRueda.getPaint().setColor(Color.WHITE);
-			  dRueda.getPaint().setStyle(Style.STROKE);
-			  dRueda.setIntrinsicWidth(15);
-			  dRueda.setIntrinsicHeight(3);
-			  graficoRueda = dRueda;
+//			  ShapeDrawable dRueda = new ShapeDrawable(new RectShape());
+//			  dRueda.getPaint().setColor(Color.WHITE);
+//			  dRueda.getPaint().setStyle(Style.STROKE);
+//			  dRueda.setIntrinsicWidth(15);
+//			  dRueda.setIntrinsicHeight(3);
+//			  graficoRueda = dRueda;
 			  
 			  rueda = new Grafico(this, graficoRueda);
 			  ruedaActiva = false;
@@ -302,9 +302,7 @@ public class VistaJuego extends View implements SensorEventListener{
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-	
+		
 	private boolean hayValorInicial = false;
 	private float valorInicial;
 
