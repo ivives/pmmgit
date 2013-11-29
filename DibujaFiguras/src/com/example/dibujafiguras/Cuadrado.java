@@ -51,7 +51,7 @@ public class Cuadrado extends Activity{
 			//Establecemos el estilo del trazo
 			pincel.setStyle(Style.STROKE);
 			canvas.drawRect(x1, y1, x2, y2, pincel);
-									
+												
 			int b = canvas.getHeight();
 			int a = canvas.getWidth();
 			
@@ -59,7 +59,8 @@ public class Cuadrado extends Activity{
 			pincel.setColor(Color.RED);
 			pincel.setTextSize(20);
 			pincel.setTextAlign(Align.CENTER);
-			canvas.drawText(resultado, a/2, b-50, pincel);
+			//canvas.drawText(resultado, a/2, b-50, pincel);
+			canvas.drawText(resultado, 200, 500, pincel);
 			
 			
 			

@@ -60,8 +60,8 @@ public class Circulo extends Activity{
 			pincel.setColor(Color.RED);
 			pincel.setTextSize(20);
 			pincel.setTextAlign(Align.CENTER);
-			canvas.drawText(resultado, a/2, b-50, pincel);
-				
+			//canvas.drawText(resultado, a/2, b-50, pincel);
+			canvas.drawText(resultado, 200, 500, pincel);	
 
 		}
 		

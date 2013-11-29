@@ -48,6 +48,11 @@ public class Triangulo extends Activity{
 			
 			
 			float area = ((nabx * acx) + (naby * acy))/2;
+			if (area < 0){
+				area = area * -1;
+			}
+			
+			
 			String areaText = String.valueOf(area);
 			String resultado = "El area del triangulo es: " + areaText;
 			
@@ -57,12 +62,11 @@ public class Triangulo extends Activity{
 			Paint pincel = new Paint();
 			Path path = new Path();
 			path.setFillType(FillType.EVEN_ODD);
+			pincel.setStyle(Style.STROKE);
 			//Seleccionamos el color azul para el pincel
 			pincel.setColor(Color.BLUE);
 			//Establecemos el grosor del pincel
 			pincel.setStrokeWidth(10);
-			//Establecemos el estilo del trazo
-			pincel.setStyle(Style.STROKE);
 			path.moveTo(x1, y1);
 			path.lineTo(x2, y2);
 			path.lineTo(x3, y3);
@@ -77,8 +81,8 @@ public class Triangulo extends Activity{
 			pincel.setColor(Color.RED);
 			pincel.setTextSize(20);
 			pincel.setTextAlign(Align.CENTER);
-			canvas.drawText(resultado, a/2, b-50, pincel);
-			
+			//canvas.drawText(resultado, a/2, b-50, pincel);
+			canvas.drawText(resultado, 200, 500, pincel);
 			
 			
 		}
