@@ -16,12 +16,14 @@ public class Juego extends Activity {
 		//musica de fondo
 		miMediaPlayer = MediaPlayer.create(this, R.raw.audio);
 		miMediaPlayer.start();
+		
+		vistaJuego = (VistaJuego) findViewById(R.id.VistaJuego);
 	}
 	
 	@Override
 	protected void onDestroy(){
 		//al poner la variable corriendo a false permitimos que el thread pueda acabar
-		vistaJuego.setCorriendo(false);
+		vistaJuego.getHilo().detener();
 		super.onDestroy();
 	}
 	
@@ -29,8 +31,8 @@ public class Juego extends Activity {
 	protected void onPause(){
 		super.onPause();
 		//ponemos el thread e suspension
-		vistaJuego.setPausa(true);
-		miMediaPlayer.pause();
+		vistaJuego.getHilo().pausar();
+		//miMediaPlayer.pause();
 		
 	}
 	
@@ -38,8 +40,10 @@ public class Juego extends Activity {
 	protected void onResume(){
 		super.onResume();
 		//continuamos ejecutando el thread
-		vistaJuego.setPausa(false);
-		miMediaPlayer.release();
+		vistaJuego.getHilo().reanudar();
+		//miMediaPlayer.release();
 	}
 
+	
+	
 }

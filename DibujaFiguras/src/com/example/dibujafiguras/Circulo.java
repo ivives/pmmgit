@@ -10,6 +10,7 @@ import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
 import android.graphics.Path.FillType;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.View;
 
@@ -33,13 +34,22 @@ public class Circulo extends Activity{
 		@Override
 		protected void onDraw (Canvas canvas){
 			
-			Float x = Float.parseFloat(b.getString("CoordenadaX"));
-			Float y = Float.parseFloat(b.getString("CoordenadaY"));
+//			Float x = Float.parseFloat(b.getString("CoordenadaX"));
+//			Float y = Float.parseFloat(b.getString("CoordenadaY"));
 			Float r = Float.parseFloat(b.getString("Radio"));
 			
 			float area = (float) ((r * r) * Math.PI);
 			String areaText = String.valueOf(area);
 			String resultado = "El area del circulo es: " + areaText;
+			
+			DisplayMetrics dm = new DisplayMetrics();
+			getWindowManager().getDefaultDisplay().getMetrics(dm);
+			int screenWidth = dm.widthPixels;
+			int screenHeight = dm.heightPixels;
+			
+			float x = screenWidth/2;
+			float y = screenHeight/3;
+			
 			
 			//Dentro de este metodo utilizamos los metodos para dibujar
 			
@@ -52,16 +62,15 @@ public class Circulo extends Activity{
 			//Establecemos el estilo del trazo
 			pincel.setStyle(Style.STROKE);
 			canvas.drawCircle(x, y, r, pincel);
-			
-			int b = canvas.getHeight();
-			int a = canvas.getWidth();
+						
+			float ay = screenHeight - 200;
 			
 			pincel.setStrokeWidth(1);
 			pincel.setColor(Color.RED);
 			pincel.setTextSize(20);
 			pincel.setTextAlign(Align.CENTER);
-			//canvas.drawText(resultado, a/2, b-50, pincel);
-			canvas.drawText(resultado, 200, 500, pincel);	
+			canvas.drawText(resultado, x, ay, pincel);
+			//canvas.drawText(resultado, 200, 500, pincel);	
 
 		}
 		

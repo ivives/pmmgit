@@ -90,7 +90,7 @@ public class VistaJuego extends View implements SensorEventListener{
 			  rueda = new Grafico(this, graficoRueda);
 			  ruedaActiva = false;
 				
-			//CONTROL DEL HILA DEL JUEGO
+			//CONTROL DEL HILO DEL JUEGO
 			  corriendo = true;
 	}
 
@@ -179,15 +179,15 @@ public class VistaJuego extends View implements SensorEventListener{
 		rueda.setPosX(bici.getPosX() + bici.getAncho()/2 - rueda.getAncho()/2);
 		rueda.setPosY(bici.getPosY() + bici.getAlto()/2 - rueda.getAlto()/2);
 		rueda.setAngulo(bici.getAngulo());
-		rueda.setIncX(Math.cos(Math.toRadians(rueda.getAngulo())) + VELOCIDAD_RUEDA);
-		rueda.setIncY(Math.sin(Math.toRadians(rueda.getAngulo())) + VELOCIDAD_RUEDA);
+		rueda.setIncX(Math.cos(Math.toRadians(bici.getAngulo())) + VELOCIDAD_RUEDA);
+		rueda.setIncY(Math.sin(Math.toRadians(bici.getAngulo())) + VELOCIDAD_RUEDA);
 		distanciaRueda = (int)Math.min(
 				this.getWidth() / Math.abs(rueda.getIncX()),
 				this.getHeight() / Math.abs(rueda.getIncY())) -2;
 		ruedaActiva = true;
 	}
 
-	public HiloJuego getHilo(){
+	HiloJuego getHilo(){
 		return hiloJuego;
 	}
 	
@@ -201,14 +201,37 @@ public class VistaJuego extends View implements SensorEventListener{
 	}
 	
 	
-	private class HiloJuego extends Thread {
+	public class HiloJuego extends Thread {
+		
+		private boolean pausa,corriendo;
+		public synchronized void pausar() {
+			pausa = true;
+		}
+		public synchronized void reanudar() {
+			pausa = false;
+			notify();
+		}
+		public void detener() {
+			corriendo = false;
+			if (pausa) reanudar();
+		}
+		
 		@Override
 		public void run() {
+			corriendo = true;
 			while (corriendo) {
 				actualizaMovimiento();
-			}
-		}
-	}
+				synchronized (this) {
+					while (pausa) {
+						try {
+							wait();
+						} catch (Exception e) {
+						}
+					}
+				}
+			} // del while
+		} //del metodo run
+	} //de la clase HiloJuego
 	
 	public boolean onKeyDown (int codigoTecla, KeyEvent evento) {
 		super.onKeyDown(codigoTecla, evento);
@@ -315,6 +338,8 @@ public class VistaJuego extends View implements SensorEventListener{
 		}
 		giroBici = (int) (valor - valorInicial)/3;
 	}
+
+
 	
 }	
 	
