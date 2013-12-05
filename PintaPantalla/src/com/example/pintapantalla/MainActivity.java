@@ -20,12 +20,6 @@ public class MainActivity extends Activity {
 	DrawingView dv ;   
 	private Paint pincel;
 	
-	private static final String MNU_OPC1 = "BLACK";
-	private static final String MNU_OPC2 = "RED";
-	private static final String MNU_OPC3 = "BLUE";
-	private static final String MNU_OPC4 = "GREEN";
-	private static final String MNU_OPC5 = "WHITE";
-	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +27,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		String color = "BLACK";
-		
+				
 		dv = new DrawingView(this);
 	    setContentView(dv);
 	    pincel = new Paint();
@@ -86,32 +80,6 @@ public class MainActivity extends Activity {
         private float mX, mY;
         private static final float TOUCH_TOLERANCE = 4;
 
-        private void touch_start(float x, float y) {
-        mPath.reset();
-        mPath.moveTo(x, y);
-        mX = x;
-        mY = y;
-        }
-        private void touch_move(float x, float y) {
-        float dx = Math.abs(x - mX);
-        float dy = Math.abs(y - mY);
-        if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
-             mPath.quadTo(mX, mY, (x + mX)/2, (y + mY)/2);
-            mX = x;
-            mY = y;
-
-
-        }
-        }
-        private void touch_up() {
-        mPath.lineTo(mX, mY);
- 
-        // commit the path to our offscreen
-        mCanvas.drawPath(mPath,  pincel);
-        // kill this so we don't double draw
-        mPath.reset();
-        }
-
         @Override
         public boolean onTouchEvent(MotionEvent event) {
         float x = event.getX();
@@ -119,15 +87,26 @@ public class MainActivity extends Activity {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                touch_start(x, y);
+            	 mPath.reset();
+                 mPath.moveTo(x, y);
+                 mX = x;
+                 mY = y;
                 invalidate();
                 break;
             case MotionEvent.ACTION_MOVE:
-                touch_move(x, y);
+            	 float dx = Math.abs(x - mX);
+                 float dy = Math.abs(y - mY);
+                 if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
+                      mPath.quadTo(mX, mY, (x + mX)/2, (y + mY)/2);
+                     mX = x;
+                     mY = y;
+                 }   
                 invalidate();
                 break;
             case MotionEvent.ACTION_UP:
-                touch_up();
+            	mPath.lineTo(mX, mY);
+            	mCanvas.drawPath(mPath,  pincel);
+                mPath.reset();
                 invalidate();
                 break;
         }
@@ -136,35 +115,6 @@ public class MainActivity extends Activity {
         }
 	
 	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_principal, menu);
-		return true;
-	}
-	
-	@Override
-    public String onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-	        case R.id.MnuOpc1:
-	            
-	            return true;
-	        case R.id.MnuOpc2:
-	        	
-	            return true;
-	        case R.id.MnuOpc3:
-	        	
-	            return true;
-	        case R.id.MnuOpc4:
-	        	
-	            return true;
-	        case R.id.MnuOpc5:
-	        	
-	            return MNU_OPC5;
-	        default:
-	            return super.onOptionsItemSelected(item);
-        }
-    }
+
 
 }
