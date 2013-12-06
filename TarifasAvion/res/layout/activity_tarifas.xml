@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/LblSeleccion"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Selecciona las opciones convenientes"
+        android:textSize="20dp" 
+        android:textColor="#0000AA"
+        android:layout_margin="20px" />
+
+    <TextView
+        android:id="@+id/LblTipo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Tipo de trayecto"
+         />
+    
+    <RadioGroup
+        android:id="@+id/grupotra"
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical" >
+
+        <RadioButton
+            android:id="@+id/radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ida" />
+
+        <RadioButton
+            android:id="@+id/radio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vuelta" />
+        
+        <RadioButton
+            android:id="@+id/radio3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ida y Vuelta" />
+    </RadioGroup>
+    
+    <TextView
+        android:id="@+id/LblDescuento"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Descuento"
+         />
+    
+    <RadioGroup
+        android:id="@+id/grupodes"
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical" >
+
+        <RadioButton
+            android:id="@+id/radio4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10%" />
+
+        <RadioButton
+            android:id="@+id/radio5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15%" />
+        
+        <RadioButton
+            android:id="@+id/radio6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20%" />
+    </RadioGroup>
+    
+    <Button android:id="@+id/BtnBoton1" 
+		android:text="Calcular tarifa"  
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content"
+		 />
+        
+    <TextView
+        android:id="@+id/LblTarifa"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         />
+    
+    <Button android:id="@+id/BtnBoton2" 
+		android:text="Aceptar"  
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content"
+		 />
+
+</LinearLayout>
