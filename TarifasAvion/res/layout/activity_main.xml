@@ -11,15 +11,24 @@
     <TextView 
         android:id="@+id/LblMensaje"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"  />  
+        android:layout_height="wrap_content"
+        android:text="Selecciona un trayecto"
+        android:textSize="30dp"
+        android:textColor="#0000AA"
+        android:layout_centerHorizontal="true"  />  
    
     <ListView android:id="@+id/LstOpciones"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp" />
     
     <TextView 
         android:id="@+id/TxtTarifa"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"  />
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="20dp"
+        android:textColor="#0000AA"
+        android:lineSpacingExtra="5dp"  />
 
 </RelativeLayout>

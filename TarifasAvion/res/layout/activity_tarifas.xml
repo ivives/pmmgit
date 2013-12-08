@@ -18,13 +18,15 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Tipo de trayecto"
+         android:textSize="15dp"
          />
     
     <RadioGroup
         android:id="@+id/grupotra"
         android:layout_width="fill_parent"
         android:layout_height="150dp"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+         >
 
         <RadioButton
             android:id="@+id/radio1"
@@ -50,14 +52,22 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Descuento"
+        android:textSize="15dp"
          />
     
     <RadioGroup
         android:id="@+id/grupodes"
         android:layout_width="fill_parent"
         android:layout_height="150dp"
-        android:orientation="vertical" >
-
+        android:orientation="vertical"
+        android:checkedButton="@+id/radio7" >
+		
+		<RadioButton
+            android:id="@+id/radio7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0%" />		
+        
         <RadioButton
             android:id="@+id/radio4"
             android:layout_width="wrap_content"
@@ -87,6 +97,7 @@
         android:id="@+id/LblTarifa"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textSize="15dp"
          />
     
     <Button android:id="@+id/BtnBoton2" 

@@ -2,8 +2,6 @@ package com.example.tarifasavion;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.widget.AdapterView;
@@ -14,13 +12,14 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 
 	final String[] destinos = new String[]{"Elem1", "Elem2", "Elem3", "Elem4"};
-	
-	
+	TextView txtTarifa;
+	public static final int CODIGO_RESPUESTA = 123;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		txtTarifa = (TextView)findViewById(R.id.TxtTarifa);
 		
 		ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, destinos);
 		
@@ -32,28 +31,38 @@ public class MainActivity extends Activity {
   				if (position == 0){
   					
   					Intent intent = new Intent(MainActivity.this, Tarifas.class);
-  												
-  					startActivityForResult(intent, 0);
+  						
+  					//Creamos la informacion a pasar entre actividades
+  					Bundle b = new Bundle();
+  					b.putString("TRAYECTO", "Madrid_Valencia");
+  					//Añadimos la informacion al intent
+  					intent.putExtras(b);
+  					  					
+  					startActivityForResult(intent, CODIGO_RESPUESTA);
   				}
   				if (position == 1){
   	  				
   	  				Intent intent = new Intent(MainActivity.this, Tarifas.class);
-  	  				 								
-  	  				startActivityForResult(intent, 0);
+  	  				
+  	  				Bundle b = new Bundle();
+					b.putString("TRAYECTO", "Madrid_Barcelona");
+					intent.putExtras(b);
+  	  				
+  	  				startActivityForResult(intent, CODIGO_RESPUESTA);
   	  			}
   				
   				if (position == 2){
   	  				
   	  				Intent intent = new Intent(MainActivity.this, Tarifas.class);
   	  				
-  	  				startActivityForResult(intent, 0);
+  	  				startActivityForResult(intent, CODIGO_RESPUESTA);
   	  			}
   				
   				if (position == 3){
   	  				
   	  				Intent intent = new Intent(MainActivity.this, Tarifas.class);
   	  				 								
-  	  				startActivityForResult(intent, 0);
+  	  				startActivityForResult(intent, CODIGO_RESPUESTA);
   	  			}
   			}	
 
@@ -61,45 +70,22 @@ public class MainActivity extends Activity {
   		});
 		
 		lstOpciones.setAdapter(adaptador);
-		
-	
-//		//Localizar los controles
-//		TextView txtTarifa = (TextView)findViewById(R.id.TxtTarifa);
-				
-//		//Recuperamos la informacion pasada en el intent
-//		Bundle b = getIntent().getExtras();
-		
-//		String tipo = b.getString("TIPO");
-//		String descuento = b.getString("DESCUENTO");
-//		String precio = b.getString("PRECIO");
-		
-//		//Construimos el mensaje para mostrar
-//		txtTarifa.setText("El vuelo contratado es: el que sea\n " + b.getString("TIPO") + b.getString("DESCUENTO") + "Precio total: " + b.getString("PRECIO"));
-//		txtTarifa.setText("El vuelo contratado es: el que sea\n " + tipo + descuento + "Precio total: " + precio);
+
 	}	
   
-	@Override
-	public void onActivityResult(int requestCode, int resultCode, Intent data){
-	    if (data != null) {
-	    	
-	    	
-	        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-	        builder.setMessage(data.getStringExtra("TIPO") + "Precio inicial: " + data.getStringExtra("PRECIOINI") + data.getStringExtra("DESCUENTO") + "Precio final: " + data.getStringExtra("PRECIOFIN"))
-	        
-	                .setTitle("El vuelo contratado es:")
-	                .setCancelable(false)
-	                .setNeutralButton("Aceptar",
-	                        new DialogInterface.OnClickListener() {
-	                            public void onClick(DialogInterface dialog, int id) {
-	                                dialog.cancel();
-	                            }
-	                        });
-	        AlertDialog alert = builder.create();
-	        alert.show();
-	    }
-	}
+	protected void onActivityResult(int requestCode,int resultCode, Intent pData)            
+    {
+        if ( requestCode == CODIGO_RESPUESTA )//Si el código de respuesta es igual al requestCode
+            {
+            if (resultCode == Activity.RESULT_OK )//Si resultCode es igual a ok
+                {
+                    final String dato = pData.getExtras().getString(Tarifas.DATO_SUBACTIVIDAD );//Obtengo el string de la subactividad
+                    //Aquí se hara lo que se desee con el valor recuperado
+                    txtTarifa.setText(dato);//El valor recogido en dato es un string que será mostrado en el TextView de la actividad principal
+                }
+            }
+    }
 		
-	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
