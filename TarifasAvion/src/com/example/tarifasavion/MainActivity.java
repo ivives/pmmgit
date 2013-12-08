@@ -2,6 +2,8 @@ package com.example.tarifasavion;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.widget.AdapterView;
@@ -12,7 +14,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 
 	final String[] destinos = new String[]{"Elem1", "Elem2", "Elem3", "Elem4"};
-//	int request_code = 10;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,27 +33,27 @@ public class MainActivity extends Activity {
   					
   					Intent intent = new Intent(MainActivity.this, Tarifas.class);
   												
-  					startActivity(intent);
+  					startActivityForResult(intent, 0);
   				}
   				if (position == 1){
   	  				
   	  				Intent intent = new Intent(MainActivity.this, Tarifas.class);
   	  				 								
-  	  				startActivity(intent);
+  	  				startActivityForResult(intent, 0);
   	  			}
   				
   				if (position == 2){
   	  				
   	  				Intent intent = new Intent(MainActivity.this, Tarifas.class);
   	  				
-  	  				startActivity(intent);
+  	  				startActivityForResult(intent, 0);
   	  			}
   				
   				if (position == 3){
   	  				
   	  				Intent intent = new Intent(MainActivity.this, Tarifas.class);
   	  				 								
-  	  				startActivity(intent);
+  	  				startActivityForResult(intent, 0);
   	  			}
   			}	
 
@@ -61,11 +63,11 @@ public class MainActivity extends Activity {
 		lstOpciones.setAdapter(adaptador);
 		
 	
-		//Localizar los controles
-		TextView txtTarifa = (TextView)findViewById(R.id.TxtTarifa);
+//		//Localizar los controles
+//		TextView txtTarifa = (TextView)findViewById(R.id.TxtTarifa);
 				
 //		//Recuperamos la informacion pasada en el intent
-		Bundle b = getIntent().getExtras();
+//		Bundle b = getIntent().getExtras();
 		
 //		String tipo = b.getString("TIPO");
 //		String descuento = b.getString("DESCUENTO");
@@ -75,21 +77,27 @@ public class MainActivity extends Activity {
 //		txtTarifa.setText("El vuelo contratado es: el que sea\n " + b.getString("TIPO") + b.getString("DESCUENTO") + "Precio total: " + b.getString("PRECIO"));
 //		txtTarifa.setText("El vuelo contratado es: el que sea\n " + tipo + descuento + "Precio total: " + precio);
 	}	
-//		 protected void onActivityResult(int requestCode, int resultCode, Intent pData){
-//			 super.onActivityResult(requestCode, resultCode, pData);
-//			 if ((requestCode == request_code))//Si resultCode es igual a ok
-//             {
-//				 if ((resultCode == RESULT_OK)){
-//					 String tipo = pData.getStringExtra("TIPO" );//Obtengo el string de la subactividad
-//		             String descuento = pData.getStringExtra("DESCUENTO" );//Obtengo el string de la subactividad
-//		             String precio = pData.getStringExtra("PRECIO" );//Obtengo el string de la subactividad
-//		                     
-//		            
-//					//Aquí se hara lo que se desee con el valor recuperado
-//		             txtTarifa.setText("El vuelo contratado es: el que sea\n " + tipo + descuento + "Precio total: " + precio);//El valor recogido en dato es un string que será mostrado en el TextView de la actividad principal
-//				 } 
-//			}        
-//		}   
+  
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data){
+	    if (data != null) {
+	    	
+	    	
+	        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	        builder.setMessage(data.getStringExtra("TIPO") + "Precio inicial: " + data.getStringExtra("PRECIOINI") + data.getStringExtra("DESCUENTO") + "Precio final: " + data.getStringExtra("PRECIOFIN"))
+	        
+	                .setTitle("El vuelo contratado es:")
+	                .setCancelable(false)
+	                .setNeutralButton("Aceptar",
+	                        new DialogInterface.OnClickListener() {
+	                            public void onClick(DialogInterface dialog, int id) {
+	                                dialog.cancel();
+	                            }
+	                        });
+	        AlertDialog alert = builder.create();
+	        alert.show();
+	    }
+	}
 		
 	
 

@@ -16,7 +16,9 @@ public class Tarifas extends Activity{
 	static String trayecto = "";
     static String descuento = "";
     static double precio = 0;
-    static String prec = String.valueOf(precio);
+    static String prec;
+    static double precioIni;
+    static String precIni;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +53,15 @@ public class Tarifas extends Activity{
 	  			public void onClick(View v) {
 	  				if (r1.isChecked() == true){
 	  					precio = t1;
+	  					precioIni = t1;
 	  				}else{
 	  					if (r2.isChecked() == true){
 	  						precio = t2;
+	  						precioIni = t2;
 	  					}else{
 	  						if (r3.isChecked() == true){
 	  							precio = t3;
+	  							precioIni = t3;
 	  						}
 	  					}
 	  				}
@@ -75,7 +80,7 @@ public class Tarifas extends Activity{
 	  					}
 	  				}
 	  				
-	  				lblTarifa.setText("Trayecto de: Madrid-Valencia\n" + trayecto + descuento + "Total precio: " + precio );
+	  				lblTarifa.setText("Trayecto de: Madrid-Valencia\n" + trayecto + "Precio inicial: " + precioIni + descuento + "Precio final: " + precio );
 	  				  				
 	  			}
 	  		});
@@ -97,11 +102,11 @@ public class Tarifas extends Activity{
 		        public void onCheckedChanged(RadioGroup group, int checkedId) {
 		        			        	
 		        	if (checkedId == R.id.radio4){
-		                descuento = "Descuento del 10%.\n";
+		                descuento = "\nDescuento del 10%.\n";
 		            }else if (checkedId == R.id.radio5){
-		            	descuento = "Descuento del 15%.\n";
+		            	descuento = "\nDescuento del 15%.\n";
 		            }else if (checkedId == R.id.radio6){
-		            	descuento = "Descuento del 20%.\n";
+		            	descuento = "\nDescuento del 20%.\n";
 		            }
 		        }
 	        });
@@ -114,46 +119,41 @@ public class Tarifas extends Activity{
 //				
 				@Override
 				public void onClick(View v) {
-					// creamos el intent
-					Intent intent2 = new Intent(Tarifas.this, MainActivity.class);
-							
-					//Creamos la informacion a pasar entre actividades
+					prec = String.valueOf(precio);
+					precIni = String.valueOf(precioIni); 
+					Intent resultData = new Intent();
+                    
+                    
+					
+					
+					
+					
+//					// creamos el intent
+//					Intent intent2 = new Intent(Tarifas.this, MainActivity.class);
+//							
+//					//Creamos la informacion a pasar entre actividades
 					Bundle b = new Bundle();
-					b.putString("PRECIO", prec);
+					b.putString("PRECIOINI", precIni);
+					b.putString("PRECIOFIN", prec);
 					b.putString("TIPO", trayecto);
 					b.putString("DESCUENTO", descuento);
-							
-					//Añadimos la informacion al intent
-					intent2.putExtras(b);
-					
-					
-					//Iniciamos la nueva actividad
-					
-					startActivity(intent2);
-					this.finish();
-//					
-//					
-////					Intent dato = new Intent();
-////			        dato.putExtra("PRECIO","prec");//Dato que pasaremos a la actividad principal
-////			        dato.putExtra("TIPO","trayecto");//Dato que pasaremos a la actividad principal
-////			        dato.putExtra("DESCUENTO","descuento");//Dato que pasaremos a la actividad principal
-////			        setResult(RESULT_OK, dato);
-////			        //Nos devuelve a la actividad principal "ActividadPrincipal"
-////			        finish();
-////					
 //							
+//					//Añadimos la informacion al intent
+//					intent2.putExtras(b);
+					resultData.putExtras(b);	
+					setResult(Activity.RESULT_OK, resultData);
+	                finish();
+					
+//					//Iniciamos la nueva actividad
+//					
+//					startActivity(intent2);
+//					finish();
+						
 				}
 
-					private void finish() {
-						// TODO Auto-generated method stub
-						
-					}
+					
 			});
 	}		
 			
-			
-	
-	
-	
 	
 }
