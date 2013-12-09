@@ -35,6 +35,8 @@ public class MainActivity extends Activity {
   					//Creamos la informacion a pasar entre actividades
   					Bundle b = new Bundle();
   					b.putString("TRAYECTO", "Madrid_Valencia");
+  					b.putInt("IDA", 100);
+  					b.putInt("IDAVUELTA", 150);
   					//Añadimos la informacion al intent
   					intent.putExtras(b);
   					  					
@@ -46,6 +48,8 @@ public class MainActivity extends Activity {
   	  				
   	  				Bundle b = new Bundle();
 					b.putString("TRAYECTO", "Madrid_Barcelona");
+					b.putInt("IDA", 150);
+  					b.putInt("IDAVUELTA", 250);
 					intent.putExtras(b);
   	  				
   	  				startActivityForResult(intent, CODIGO_RESPUESTA);

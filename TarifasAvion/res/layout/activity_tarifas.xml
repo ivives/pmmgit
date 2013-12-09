@@ -8,16 +8,26 @@
         android:id="@+id/LblSeleccion"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Selecciona las opciones convenientes"
-        android:textSize="20dp" 
+        android:text="@string/selecciona"
+        android:textSize="30dp" 
         android:textColor="#0000AA"
-        android:layout_margin="20px" />
+        android:layout_margin="30dp"
+         />
 
+    <TextView
+        android:id="@+id/LblTrayecto"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp" 
+        android:textColor="#FF0000"
+        android:layout_margin="20dp"
+         />
+    
     <TextView
         android:id="@+id/LblTipo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Tipo de trayecto"
+        android:text="@string/tipotra"
          android:textSize="15dp"
          />
     
@@ -32,26 +42,26 @@
             android:id="@+id/radio1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ida" />
+            android:text="@string/ida" />
 
         <RadioButton
             android:id="@+id/radio2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vuelta" />
+            android:text="@string/vuelta" />
         
         <RadioButton
             android:id="@+id/radio3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ida y Vuelta" />
+            android:text="@string/idavuelta" />
     </RadioGroup>
     
     <TextView
         android:id="@+id/LblDescuento"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Descuento"
+        android:text="@string/descuento"
         android:textSize="15dp"
          />
     
@@ -88,7 +98,7 @@
     </RadioGroup>
     
     <Button android:id="@+id/BtnBoton1" 
-		android:text="Calcular tarifa"  
+		android:text="@string/calcular"  
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content"
 		 />
@@ -101,7 +111,7 @@
          />
     
     <Button android:id="@+id/BtnBoton2" 
-		android:text="Aceptar"  
+		android:text="@string/aceptar"  
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content"
 		 />

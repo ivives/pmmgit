@@ -3,6 +3,13 @@
 
     <string name="app_name">TarifasAvion</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="selecciona">Selecciona las opciones convenientes</string>
+    <string name="tipotra">Tipo de trayecto</string>
+    <string name="ida">Ida</string>
+    <string name="vuelta">Vuelta</string>
+    <string name="idavuelta">Ida y Vuelta</string>
+    <string name="descuento">Descuento</string>
+    <string name="calcular">Calcular tarifa</string>
+    <string name="aceptar">Aceptar</string>
 
 </resources>

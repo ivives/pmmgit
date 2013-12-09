@@ -20,10 +20,10 @@ public class Tarifas extends Activity{
     static String prec;
     static double precioIni;
     static String precIni;
+    static int t1;
+    static int t2;
+    static int t3;
     
-    static int t1 = 100;
-    static int t2 = 100;
-    static int t3 = 150;
     
     public static final String DATO_SUBACTIVIDAD="";
     
@@ -42,9 +42,9 @@ public class Tarifas extends Activity{
         r5=(RadioButton)findViewById(R.id.radio5);
         r6=(RadioButton)findViewById(R.id.radio6);
 		final TextView lblTarifa = (TextView)findViewById(R.id.LblTarifa);
+		final TextView lblTrayecto = (TextView)findViewById(R.id.LblTrayecto);
 	    final RadioGroup rg = (RadioGroup)findViewById(R.id.grupotra);
 	    final RadioGroup rg2 = (RadioGroup)findViewById(R.id.grupodes);
-	    
 	    
 	    final double d1 = 0.1;
 	    final double d2 = 0.15;
@@ -53,7 +53,10 @@ public class Tarifas extends Activity{
 	    Bundle b = this.getIntent().getExtras();
 	    
 	    trayecto = b.getString("TRAYECTO");
-	   	   
+	    t1 = b.getInt("IDA");
+	    t3 = b.getInt("IDAVUELTA");
+	    t2 = t1;
+	   	lblTrayecto.setText("Trayecto seleccionado: " + b.getString("TRAYECTO"));   
 	      
 	  //Evento boton 1
 	  		btnBoton1.setOnClickListener(new OnClickListener() {
