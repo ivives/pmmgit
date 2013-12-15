@@ -9,6 +9,7 @@ import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.View;
 
@@ -31,14 +32,22 @@ Bundle b;
 		@Override
 		protected void onDraw (Canvas canvas){
 			
-			Float x1 = Float.parseFloat(b.getString("CoordenadaX"));
-			Float y1 = Float.parseFloat(b.getString("CoordenadaY"));
-			Float x2 = Float.parseFloat(b.getString("CoordenadaX2"));
-			Float y2 = Float.parseFloat(b.getString("CoordenadaY2"));
+			Float d1 = Float.parseFloat(b.getString("DIAm"));
+			Float d2 = Float.parseFloat(b.getString("DIAM"));
 			
-			float area = (float) (((x2 - x1)/2) * ((y2 - y1)/2) * Math.PI);
+			
+			float area = (float) ((d1/2) * (d2/2) * Math.PI);
 			String areaText = String.valueOf(area);
 			String resultado = "El area del ovalo es: " + areaText;
+			
+			DisplayMetrics dm = new DisplayMetrics();
+			getWindowManager().getDefaultDisplay().getMetrics(dm);
+			int screenWidth = dm.widthPixels;
+			int screenHeight = dm.heightPixels;
+			
+			float x = screenWidth/2;
+			float y = screenHeight/3;
+			float ay = screenHeight - 150;
 			
 			
 			//Dentro de este metodo utilizamos los metodos para dibujar
@@ -51,18 +60,14 @@ Bundle b;
 			pincel.setStrokeWidth(10);
 			//Establecemos el estilo del trazo
 			pincel.setStyle(Style.STROKE);
-			canvas.drawOval(new RectF(x1, y1, x2, y2), pincel);
+			canvas.drawOval(new RectF((x - d1/2), (y - d2/2), (x + d1), (y + d2)), pincel);
 			
-			
-			int b = canvas.getHeight();
-			int a = canvas.getWidth();
-			
+				
 			pincel.setStrokeWidth(1);
 			pincel.setColor(Color.RED);
 			pincel.setTextSize(20);
 			pincel.setTextAlign(Align.CENTER);
-			//canvas.drawText(resultado, a/2, b-50, pincel);
-			canvas.drawText(resultado, 200, 500, pincel);
+			canvas.drawText(resultado, x, ay, pincel);
 					
 
 		}

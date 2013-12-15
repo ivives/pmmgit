@@ -5,10 +5,8 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
-import android.graphics.Path.FillType;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Menu;
@@ -34,8 +32,6 @@ public class Circulo extends Activity{
 		@Override
 		protected void onDraw (Canvas canvas){
 			
-//			Float x = Float.parseFloat(b.getString("CoordenadaX"));
-//			Float y = Float.parseFloat(b.getString("CoordenadaY"));
 			Float r = Float.parseFloat(b.getString("Radio"));
 			
 			float area = (float) ((r * r) * Math.PI);
@@ -63,14 +59,14 @@ public class Circulo extends Activity{
 			pincel.setStyle(Style.STROKE);
 			canvas.drawCircle(x, y, r, pincel);
 						
-			float ay = screenHeight - 200;
+			float ay = screenHeight - 150;
 			
 			pincel.setStrokeWidth(1);
 			pincel.setColor(Color.RED);
 			pincel.setTextSize(20);
 			pincel.setTextAlign(Align.CENTER);
 			canvas.drawText(resultado, x, ay, pincel);
-			//canvas.drawText(resultado, 200, 500, pincel);	
+			
 
 		}
 		

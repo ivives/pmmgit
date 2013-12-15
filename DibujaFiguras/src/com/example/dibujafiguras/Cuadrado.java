@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.View;
 
@@ -31,14 +32,21 @@ public class Cuadrado extends Activity{
 		@Override
 		protected void onDraw (Canvas canvas){
 			
-			Float x1 = Float.parseFloat(b.getString("CoordenadaX"));
-			Float y1 = Float.parseFloat(b.getString("CoordenadaY"));
-			Float x2 = Float.parseFloat(b.getString("CoordenadaX2"));
-			Float y2 = Float.parseFloat(b.getString("CoordenadaY2"));
+			Float l1 = Float.parseFloat(b.getString("LADO1"));
+			Float l2 = Float.parseFloat(b.getString("LADO2"));
 			
-			float area = ((x2 - x1) * (y2 - y1));
+			float area = (l1 * l2);
 			String areaText = String.valueOf(area);
 			String resultado = "El area del cuadrado es: " + areaText ;
+			
+			DisplayMetrics dm = new DisplayMetrics();
+			getWindowManager().getDefaultDisplay().getMetrics(dm);
+			int screenWidth = dm.widthPixels;
+			int screenHeight = dm.heightPixels;
+			
+			float x = screenWidth/2;
+			float y = screenHeight/3;
+			float ay = screenHeight - 150;
 			
 			//Dentro de este metodo utilizamos los metodos para dibujar
 			
@@ -50,17 +58,14 @@ public class Cuadrado extends Activity{
 			pincel.setStrokeWidth(10);
 			//Establecemos el estilo del trazo
 			pincel.setStyle(Style.STROKE);
-			canvas.drawRect(x1, y1, x2, y2, pincel);
-												
-			int b = canvas.getHeight();
-			int a = canvas.getWidth();
+			canvas.drawRect((x- l1/2), (y - l2/2), (x + l1), (y + l2), pincel);
 			
 			pincel.setStrokeWidth(1);
 			pincel.setColor(Color.RED);
 			pincel.setTextSize(20);
 			pincel.setTextAlign(Align.CENTER);
-			//canvas.drawText(resultado, a/2, b-50, pincel);
-			canvas.drawText(resultado, 200, 500, pincel);
+			canvas.drawText(resultado, x, ay, pincel);
+			
 			
 			
 			

@@ -4,59 +4,47 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <TextView 
-        android:id="@+id/lblCoorX"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/coorX"  />
-    
-    <EditText 
-        android:id="@+id/TxtCoorX"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text=""/>
-
-    <TextView 
-        android:id="@+id/lblCoorY"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/coorY"  />
-    
-    <EditText 
-        android:id="@+id/TxtCoorY"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text=""/>
-    
      <TextView 
-        android:id="@+id/lblCoorX2"
+        android:id="@+id/lblDiam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/coorX2"  />
+        android:text="@string/diam"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp" />
     
     <EditText 
-        android:id="@+id/TxtCoorX2"
-        android:layout_width="fill_parent"
+        android:id="@+id/TxtDiam"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:text=""
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:inputType="number"/>
 
     <TextView 
-        android:id="@+id/lblCoorY2"
+        android:id="@+id/lblDiaM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/coorY2"  />
+        android:text="@string/diaM"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp" />
     
     <EditText 
-        android:id="@+id/TxtCoorY2"
-        android:layout_width="fill_parent"
+        android:id="@+id/TxtDiaM"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:text=""
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:inputType="number"/>
             
     <Button 
         android:id="@+id/BotonDibuja"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dibuja"/>
+        android:text="@string/dibuja"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="40dp"/>
     
 
 </LinearLayout>

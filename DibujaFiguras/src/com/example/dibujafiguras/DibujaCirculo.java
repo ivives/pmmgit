@@ -18,8 +18,6 @@ public class DibujaCirculo extends Activity{
 		setContentView(R.layout.activity_dibujacirculo);
 		
 		final Button btnDibuja = (Button)findViewById(R.id.BotonDibuja);
-		final EditText txtCoorX = (EditText)findViewById(R.id.TxtCoorX);
-		final EditText txtCoorY = (EditText)findViewById(R.id.TxtCoorY);
 		final EditText txtRadio = (EditText)findViewById(R.id.TxtRadio);
 		
 		
@@ -33,8 +31,6 @@ public class DibujaCirculo extends Activity{
 							
 				//Creamos la informacion a pasar entre actividades
 				Bundle b = new Bundle();
-				b.putString("CoordenadaX", txtCoorX.getText().toString());
-				b.putString("CoordenadaY", txtCoorY.getText().toString());
 				b.putString("Radio", txtRadio.getText().toString());
 							
 				//Añadimos la informacion al intent

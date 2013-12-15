@@ -17,10 +17,8 @@ public class DibujaCuadrado extends Activity{
 		setContentView(R.layout.activity_dibujacuadrado);
 		
 		final Button btnDibuja = (Button)findViewById(R.id.BotonDibuja);
-		final EditText txtCoorX = (EditText)findViewById(R.id.TxtCoorX);
-		final EditText txtCoorY = (EditText)findViewById(R.id.TxtCoorY);
-		final EditText txtCoorX2 = (EditText)findViewById(R.id.TxtCoorX2);
-		final EditText txtCoorY2 = (EditText)findViewById(R.id.TxtCoorY2);
+		final EditText lado1 = (EditText)findViewById(R.id.TxtLado1);
+		final EditText lado2 = (EditText)findViewById(R.id.TxtLado2);
 		
 		
 		//Implementamos el evento "click" del boton
@@ -33,10 +31,9 @@ public class DibujaCuadrado extends Activity{
 							
 				//Creamos la informacion a pasar entre actividades
 				Bundle b = new Bundle();
-				b.putString("CoordenadaX", txtCoorX.getText().toString());
-				b.putString("CoordenadaY", txtCoorY.getText().toString());
-				b.putString("CoordenadaX2", txtCoorX2.getText().toString());
-				b.putString("CoordenadaY2", txtCoorY2.getText().toString());
+				b.putString("LADO1", lado1.getText().toString());
+				b.putString("LADO2", lado2.getText().toString());
+				
 							
 				//Añadimos la informacion al intent
 				intent.putExtras(b);

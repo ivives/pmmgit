@@ -5,58 +5,46 @@
     android:orientation="vertical" >
     
     <TextView 
-        android:id="@+id/lblCoorX"
+        android:id="@+id/lblLado1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/coorX"  />
+        android:text="@string/lado1"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"  />
     
     <EditText 
-        android:id="@+id/TxtCoorX"
-        android:layout_width="fill_parent"
+        android:id="@+id/TxtLado1"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:inputType="number"
+        android:text=""
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"/>
 
     <TextView 
-        android:id="@+id/lblCoorY"
+        android:id="@+id/lblLado2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/coorY"  />
+        android:text="@string/lado2"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp" />
     
     <EditText 
-        android:id="@+id/TxtCoorY"
-        android:layout_width="fill_parent"
+        android:id="@+id/TxtLado2"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text=""/>
-    
-     <TextView 
-        android:id="@+id/lblCoorX2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/coorX2"  />
-    
-    <EditText 
-        android:id="@+id/TxtCoorX2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text=""/>
-
-    <TextView 
-        android:id="@+id/lblCoorY2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/coorY2"  />
-    
-    <EditText 
-        android:id="@+id/TxtCoorY2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text=""/>
-            
+        android:inputType="number"
+        android:text=""
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"/>
+                
     <Button 
         android:id="@+id/BotonDibuja"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dibuja"/>
+        android:text="@string/dibuja"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="40dp" />
     
 
 </LinearLayout>

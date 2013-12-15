@@ -5,47 +5,29 @@
     android:orientation="vertical" >
     
     <TextView 
-        android:id="@+id/lblCoorX"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/coorX"  />
-    
-    <EditText 
-        android:id="@+id/TxtCoorX"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text=""/>
-
-    <TextView 
-        android:id="@+id/lblCoorY"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/coorY"  />
-    
-    <EditText 
-        android:id="@+id/TxtCoorY"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text=""/>
-    
-    <TextView 
         android:id="@+id/lblRadio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/radio"  />
-    
-    
+        android:text="@string/radio"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"  />
+       
     <EditText 
         android:id="@+id/TxtRadio"
-        android:layout_width="fill_parent"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:inputType="number"
+        android:text=""
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"/>
     
     <Button 
         android:id="@+id/BotonDibuja"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dibuja"/>
+        android:text="@string/dibuja"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="40dp"/>
     
 
 </LinearLayout>

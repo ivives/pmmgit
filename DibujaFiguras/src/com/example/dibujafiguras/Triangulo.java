@@ -10,6 +10,7 @@ import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
 import android.graphics.Path.FillType;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.View;
 
@@ -46,17 +47,22 @@ public class Triangulo extends Activity{
 			float nabx = y2 - y1;
 			float naby = -(x2 - x1);
 			
-			
 			float area = ((nabx * acx) + (naby * acy))/2;
 			if (area < 0){
 				area = area * -1;
 			}
 			
-			
 			String areaText = String.valueOf(area);
 			String resultado = "El area del triangulo es: " + areaText;
 			
-			//Dentro de este metodo utilizamos los metodos para dibujar
+			DisplayMetrics dm = new DisplayMetrics();
+			getWindowManager().getDefaultDisplay().getMetrics(dm);
+			int screenWidth = dm.widthPixels;
+			int screenHeight = dm.heightPixels;
+			
+			float x = screenWidth/2;
+			float y = screenHeight/3;
+			float ay = screenHeight - 150;
 			
 			//Creamos un pincel con el que elegir color, trazo, estilo, etc.
 			Paint pincel = new Paint();
@@ -73,17 +79,12 @@ public class Triangulo extends Activity{
 			path.lineTo(x1, y1);
 			path.close();
 			canvas.drawPath(path, pincel);
-			
-			int b = canvas.getHeight();
-			int a = canvas.getWidth();
-			
+						
 			pincel.setStrokeWidth(1);
 			pincel.setColor(Color.RED);
 			pincel.setTextSize(20);
 			pincel.setTextAlign(Align.CENTER);
-			//canvas.drawText(resultado, a/2, b-50, pincel);
-			canvas.drawText(resultado, 200, 500, pincel);
-			
+			canvas.drawText(resultado, x, ay, pincel);
 			
 		}
 	}
