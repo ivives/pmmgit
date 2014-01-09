@@ -143,7 +143,7 @@ class AdaptadorDestino extends ArrayAdapter<Destino> {
 							if (regalo.isChecked() && tarjeta.isChecked()){
 								decoracion = " Con caja regalo y dedicatoria";
 							}else {
-								decoracion = "";
+								decoracion = "Sin decoracion";
 							}
 						}
 					}
