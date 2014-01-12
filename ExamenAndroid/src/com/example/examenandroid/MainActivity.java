@@ -168,6 +168,7 @@ class AdaptadorDestino extends ArrayAdapter<Destino> {
   					Bundle b = new Bundle();
   					b.putInt("Mapa", mapa);
   					b.putString("Tarifa", resultado);
+  					b.putDouble("Precio", tarifa);
   					
   					//Añadimos la informacion al intent
   					intent.putExtras(b);
