@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,7 +26,7 @@ public class PantallaDos extends Activity{
 		 TextView tarifa = (TextView)findViewById(R.id.LblTarifa);
     	 ImageView mapa = (ImageView)findViewById(R.id.Imagen);
     	 TextView cambio = (TextView)findViewById(R.id.LblCambio);
- //   	 ImageView imagen = (ImageView)findViewById(R.id.Pase);
+//    	 ImageView imagen = (ImageView)findViewById(R.id.Trans);
     	 
     	 // recuperamos informacion del intent
     	 Bundle b = this.getIntent().getExtras();
@@ -93,6 +94,8 @@ public class PantallaDos extends Activity{
     			 "\nMonedas de 2 centimos: " + m002 +
     			 "\nMonedas de 1 centimo: " + m001);
     	 
+    	 
+    	 ImageView imagen = (ImageView)findViewById(R.id.Trans);
     	     	 
 //    	 //Obtenemos el recurso creado en animacion.xml
 //         animaci = (AnimationDrawable) getResources().getDrawable(R.drawable.animacion);
@@ -108,6 +111,13 @@ public class PantallaDos extends Activity{
     	 
     	 
     	
+		 		
+  		TransitionDrawable miTransicion = (TransitionDrawable)
+  				getResources().getDrawable(R.drawable.transicion);
+  		imagen.setImageDrawable(miTransicion);
+  		miTransicion.startTransition(2000);
+
+    	 
     	 
 	}
 	

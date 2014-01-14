@@ -159,7 +159,7 @@ class AdaptadorDestino extends ArrayAdapter<Destino> {
 					
 					
 					resultado = ("Zona: " + zona + " (" + continente + ")" + "\nTarifa: " + clase + "\nPeso: " + peso +
-							" Kg" + "\n\nDecoracion: " + decoracion + "\nCOSTE FINAL: " + tarifa + " €");
+							" Kg" + "\n\nDecoracion: " + decoracion + "\nCOSTE FINAL: " + tarifa + " euros");
 					
 					
 					Intent intent = new Intent(MainActivity.this, PantallaDos.class);
@@ -170,7 +170,7 @@ class AdaptadorDestino extends ArrayAdapter<Destino> {
   					b.putString("Tarifa", resultado);
   					b.putDouble("Precio", tarifa);
   					
-  					//Añadimos la informacion al intent
+  					//Aï¿½adimos la informacion al intent
   					intent.putExtras(b);
   					  					
   					startActivity(intent);

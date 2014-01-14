@@ -33,7 +33,12 @@
 	android:layout_marginTop="275dp"
 	android:layout_marginLeft="40dp" />
 
-
-
+<ImageView android:id="@+id/Trans"
+    android:layout_width="180dp" 
+	android:layout_height="180dp" 
+	android:adjustViewBounds="true"
+	android:scaleType="centerInside"
+	android:layout_centerHorizontal="true"
+	android:layout_below="@+id/LblCambio" />
 	
 </RelativeLayout>
