@@ -30,14 +30,14 @@ public class EjemploBaseDatos extends Activity {
         		//Introducimos los datos en la tabla Clientes
         		bd.execSQL("INSERT INTO Clientes (codigo, nombre, telefono) " +
         					"VALUES (" + codigo + ", '" + nombre + "', '" + telefono + "')");
-        		/*
+        		
         		//Insertar un registro
         		bd.execSQL("INSERT INTO Clientes (cliente, telefono) VALUES ('cli1','11111') ");
         		//Actualizar un registro
-        		bd.execSQL("UPDATE Clientes SET telefono='00000' WHERE cliente='cli1' ");
+//        		bd.execSQL("UPDATE Clientes SET telefono='00000' WHERE cliente='cli1' ");
         		//Eliminar un registro
-        		bd.execSQL("DELETE FROM Clientes WHERE cliente='cli1' ");
-        		
+//        		bd.execSQL("DELETE FROM Clientes WHERE cliente='cli1' ");
+        		/*
         		//Ejemplo de utilizaci�n del m�todo insert()
         		//Creamos el registro que queremos insertar utilizando un objeto ContentValues
         		ContentValues nuevoRegistro = new ContentValues();
@@ -84,7 +84,7 @@ public class EjemploBaseDatos extends Activity {
         			} while (c.moveToNext());
         		}
         		*/
-        	}// del for
+        	}
         	
         	//Cerramos la base de datos
         	bd.close();

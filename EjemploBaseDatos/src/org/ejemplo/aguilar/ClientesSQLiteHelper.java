@@ -8,34 +8,34 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class ClientesSQLiteHelper extends SQLiteOpenHelper {
 	//Cadena con la sentencia SQL que permite crear la tabla Clientes
 	String cadSQL = "CREATE TABLE Clientes (codigo INTEGER, nombre TEXT, telefono TEXT)";
-	
+	static final int ver = 2;
 	public ClientesSQLiteHelper(Context contexto, String nombre, CursorFactory almacen, int version){
-		super(contexto, nombre, almacen, version);
+		super(contexto, nombre, almacen, ver);
 	}
 	
-	//Este método se ejecuta automáticamente cuando sea necesaria la creación de la base de datos.
-	//Es decir, se ejecutará cuando la base de datos todavía no exista.
-	//Aquí deben crearse todas las tablas necesarias e insertar los datos iniciales si es necesario.
+	//Este mï¿½todo se ejecuta automï¿½ticamente cuando sea necesaria la creaciï¿½n de la base de datos.
+	//Es decir, se ejecutarï¿½ cuando la base de datos todavï¿½a no exista.
+	//Aquï¿½ deben crearse todas las tablas necesarias e insertar los datos iniciales si es necesario.
 	@Override
 	public void onCreate(SQLiteDatabase bd) {
 		//Ejecutamos la sentencia SQL para crear la tabla Clientes
-		//El método execSQL se limita a ejecutar directamente el código SQL que le pasemos.
+		//El mï¿½todo execSQL se limita a ejecutar directamente el cï¿½digo SQL que le pasemos.
 		bd.execSQL(cadSQL);
 	}
 	
-	//Este método se lanza automáticamente cuando es necesaria una actualización de la estructura 
-	//de la base de datos o una conversión de los datos.
+	//Este mï¿½todo se lanza automï¿½ticamente cuando es necesaria una actualizaciï¿½n de la estructura 
+	//de la base de datos o una conversiï¿½n de los datos.
 	@Override
 	public void onUpgrade(SQLiteDatabase bd, int versionAnterior, int versionNueva) {
 		//NOTA: Para simplificar este ejemplo eliminamos la tabla anterior y la creamos de nuevo
 		//		con el nuevo formato.
-		//		Lo normal sería realizar una migración o traspaso de los datos de la tabla antigua
-		//		a la nueva, con la consiguiente complicación que ello conlleva.
+		//		Lo normal serï¿½a realizar una migraciï¿½n o traspaso de los datos de la tabla antigua
+		//		a la nueva, con la consiguiente complicaciï¿½n que ello conlleva.
 		
-		//Eliminamos la versión anterior de la tabla
+		//Eliminamos la versiï¿½n anterior de la tabla
 		bd.execSQL("DROP TABLE IF EXISTS Clientes");
 		
-		//Creamos la nueva versión de la tabla
+		//Creamos la nueva versiï¿½n de la tabla
 		bd.execSQL(cadSQL);
 	}
 }
