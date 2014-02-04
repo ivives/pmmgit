@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MainActivity" >
+    
+    <TextView 
+        android:id="@+id/LblMensaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:text="TRANSPORTES ANDROID" 
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp" /> 
+        
+   <Spinner 
+      	android:id="@+id/CmbOpciones"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_below="@+id/LblMensaje" />
+   
+   <RadioGroup 
+       android:id="@+id/radiogroup1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/CmbOpciones"
+       android:layout_alignParentRight="true"
+       android:layout_marginTop="140dp"
+        >
+       
+       <RadioButton 
+        	android:layout_width="wrap_content"
+       		android:layout_height="wrap_content"
+       		android:id="@+id/radionormal"
+       		android:text="TARIFA NORMAL"
+       		android:checked="true"
+       		android:textSize="20dp" />
+       
+       <RadioButton 
+        	android:layout_width="wrap_content"
+       		android:layout_height="wrap_content"
+       		android:id="@+id/radiourgente"
+       		android:text="TARIFA URGENTE"
+       		android:textSize="20dp" />
+      
+   </RadioGroup>
+        
+   <CheckBox
+		android:text="Caja regalo"
+		android:id="@+id/checkregalo"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/radiogroup1"
+		android:layout_alignParentLeft="true"
+		android:layout_marginTop="100dp"
+		android:textSize="20dp">
+	</CheckBox>
+
+	<CheckBox
+		android:text="Con tarjeta dedicada"
+		android:id="@+id/checktarjeta"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@+id/checkregalo"
+		android:layout_below="@+id/radiogroup1"
+		android:layout_marginLeft="20dp"
+		android:layout_marginTop="100dp"
+		android:textSize="20dp" >
+	</CheckBox>
+	
+	<EditText 
+	    android:id="@+id/textpeso"
+	    android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/checkregalo"
+		android:hint="Introduce el peso del paquete"
+		android:inputType="number"
+	     />
+  
+	<Button android:id="@+id/BtnCalcula" 
+		android:text="HACER CALCULOS"  
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true"
+		  />
+	
+    
+   
+
+</RelativeLayout>
