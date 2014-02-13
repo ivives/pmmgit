@@ -1,22 +1,22 @@
 package com.example.bdcentrosprofesores;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
+public class Personal {
 
-public class Personal extends Activity {
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_personal);
+	
+	private int dni;
+	private String apellido;
+	
+	public int getDni() {
+		return dni;
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.personal, menu);
-		return true;
+	public void setDni(int dni) {
+		this.dni = dni;
 	}
-
+	public String getApellido() {
+		return apellido;
+	}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	
 }

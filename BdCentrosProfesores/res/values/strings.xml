@@ -7,8 +7,10 @@
     <string name="personal">Personal</string>
     <string name="centros">Centros</string>
     <string name="title_activity_profesores">Profesores</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="lista_vacia">La lista esta vacia</string>
     <string name="title_activity_personal">Personal</string>
     <string name="title_activity_centros">Centros</string>
+    <string name="title_activity_mostrar_centro">MostrarCentro</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

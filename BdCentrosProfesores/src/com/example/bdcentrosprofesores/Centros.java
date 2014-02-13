@@ -1,22 +1,41 @@
 package com.example.bdcentrosprofesores;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
+public class Centros {
 
-public class Centros extends Activity {
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_centros);
+	private String codCentro;
+	private String nomCentro;
+	private String direccion;
+	public Centros(String cod, String nom, String dir)
+	{
+		codCentro = cod;
+		nomCentro =nom;
+		direccion=dir;
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.centros, menu);
-		return true;
+	public String getDireccion() 
+	{
+		return direccion;
 	}
-
+	public void setDireccion(String direccion) 
+	{
+		this.direccion = direccion;
+	}
+	public String getCodCentro() 
+	{
+		return codCentro;
+	}
+	public void setCodCentro(String codCentro) 
+	{
+		this.codCentro = codCentro;
+	}
+	public String getNomCentro() 
+	{
+		return nomCentro;
+	}
+	public void setNomCentro(String nomCentro) 
+	{
+		this.nomCentro = nomCentro;
+	}
+	
+	
+	
 }

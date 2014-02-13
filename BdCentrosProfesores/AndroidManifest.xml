@@ -34,6 +34,18 @@
             android:name="com.example.bdcentrosprofesores.Centros"
             android:label="@string/title_activity_centros" >
         </activity>
+        <activity
+            android:name="com.example.bdcentrosprofesores.ConsultaCentros"
+            android:label="@string/title_activity_centros" >
+        </activity>
+        <activity
+            android:name="com.example.bdcentrosprofesores.CreaBase"
+            android:label="@string/title_activity_centros" >
+        </activity>
+        <activity
+            android:name="com.example.bdcentrosprofesores.MostrarCentro"
+            android:label="@string/title_activity_mostrar_centro" >
+        </activity>
     </application>
 
 </manifest>

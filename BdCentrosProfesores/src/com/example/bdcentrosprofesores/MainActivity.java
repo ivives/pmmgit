@@ -1,7 +1,10 @@
 package com.example.bdcentrosprofesores;
 
+
+
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -18,6 +21,11 @@ public class MainActivity extends Activity {
 		Button buttonProfesores = (Button)findViewById(R.id.Proferores);
 		Button buttonCentros = (Button)findViewById(R.id.Centros);
 		Button buttonPersonal = (Button)findViewById(R.id.Personal);
+		
+		
+//		CreaBase base = new CreaBase(this,"dbase",null,1);
+//		SQLiteDatabase db=base.getReadableDatabase();
+		
 		
 		buttonProfesores.setOnClickListener(new OnClickListener() {
 			
@@ -45,7 +53,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, Centros.class);
+				Intent intent = new Intent(MainActivity.this, ConsultaCentros.class);
 					
 				startActivity(intent);
 				
