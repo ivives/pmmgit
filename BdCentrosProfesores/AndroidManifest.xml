@@ -46,6 +46,50 @@
             android:name="com.example.bdcentrosprofesores.MostrarCentro"
             android:label="@string/title_activity_mostrar_centro" >
         </activity>
+        <activity
+            android:name="com.example.bdcentrosprofesores.InsertarCentros"
+            android:label="@string/title_activity_insertar_centros" >
+        </activity>
+        <activity
+            android:name="com.example.bdcentrosprofesores.ConsultaPersonal"
+            android:label="@string/title_activity_consulta_personal" >
+        </activity>
+        <activity
+            android:name="com.example.bdcentrosprofesores.MostrarPersonal"
+            android:label="@string/title_activity_mostrar_personal" >
+        </activity>
+        <activity
+            android:name="com.example.bdcentrosprofesores.InsertarPersonal"
+            android:label="@string/title_activity_insertar_personal" >
+        </activity>
+        <activity
+            android:name="com.example.bdcentrosprofesores.ConsultaProfesores"
+            android:label="@string/title_activity_consulta_profesores" >
+        </activity>
+        <activity
+            android:name="com.example.bdcentrosprofesores.MostrarProfesores"
+            android:label="@string/title_activity_mostrar_profesores" >
+        </activity>
+        <activity
+            android:name="com.example.bdcentrosprofesores.Consultas"
+            android:label="@string/title_activity_consultas" >
+        </activity>
+        <activity
+            android:name="com.example.bdcentrosprofesores.SalarioMayor"
+            android:label="@string/title_activity_salario_mayor" >
+        </activity>
+        <activity
+            android:name="com.example.bdcentrosprofesores.SalarioMenor"
+            android:label="@string/title_activity_salario_menor" >
+        </activity>
+        <activity
+            android:name="com.example.bdcentrosprofesores.MayorSalarioGrupo"
+            android:label="@string/title_activity_mayor_salario_grupo" >
+        </activity>
+        <activity
+            android:name="com.example.bdcentrosprofesores.MenorSalarioGrupo"
+            android:label="@string/title_activity_menor_salario_grupo" >
+        </activity>
     </application>
 
 </manifest>

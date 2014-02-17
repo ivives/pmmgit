@@ -22,7 +22,7 @@ public class ConsultaCentros extends Activity {
 	public static final int CODIGO_RESPUESTA = 123;
 	
 	CreaBase base;
-private Centros[] datos;
+	private Centros[] datos;
 	
 	class AdaptadorCentro extends ArrayAdapter<Centros> 
 	{
@@ -44,12 +44,18 @@ private Centros[] datos;
 			View item = inflater.inflate(R.layout.listin, null);
 			 	 	 
 			final TextView lblCodigo=(TextView)item.findViewById(R.id.codigo);
+			final TextView lblTipo = (TextView)item.findViewById(R.id.tipo);
 			final TextView lblNombre = (TextView)item.findViewById(R.id.nombre);
 			final TextView lblDireccion = (TextView)item.findViewById(R.id.direccion);
+			final TextView lblTelefono = (TextView)item.findViewById(R.id.telefono);
+			final TextView lblPlazas = (TextView)item.findViewById(R.id.plazas);
 			
 			lblNombre.setText(datos[position].getNomCentro());
+			lblTipo.setText(datos[position].getTipoCentro());
 			lblCodigo.setText(datos[position].getCodCentro());
 			lblDireccion.setText(datos[position].getDireccion());
+			lblTelefono.setText(datos[position].getTelefono());
+			lblPlazas.setText(datos[position].getNumPlazas());
 			
 			return(item);
 		}
@@ -60,13 +66,11 @@ private Centros[] datos;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_consulta_centros);
 		
-		
-		//ArrayList<CentrosIes> centros=new ArrayList<CentrosIes>(); 
-		
+				
 		try 
 		{
 			
-			String[] campos = new String[] {"cod_centro","nombre","direccion"};
+			String[] campos = new String[] {"cod_centro","tipo_centro","nombre","direccion","telefono","num_plazas"};
 			
 			base=new CreaBase(this,"dbase",null,1);
 			SQLiteDatabase db=base.getReadableDatabase();
@@ -75,17 +79,21 @@ private Centros[] datos;
 			Cursor rs=db.query("centros", campos, null,null,null,null,null);
 			
 			datos=new Centros[rs.getCount()+1];//Devuelve el numero de filas + 1 
-			datos[0]= new Centros("Codigos","Nombres","Direccion");
+			datos[0]= new Centros("Codigo","Tipo","Nombre","Direccion","Telefono","NumPlazas");
 			int i=1;
 	        if (rs.moveToFirst()) 
 	        {
 	                do 
 	                {
 	                		String cod=rs.getString(0);
-	                		String nom=rs.getString(1);
-	                        String dir=rs.getString(2);
+	                		String tip=rs.getString(1);
+	                		String nom=rs.getString(2);
+	                        String dir=rs.getString(3);
+	                        String tel=rs.getString(4);
+	                        String num=rs.getString(5);
 	                        
-	                        datos[i]=new Centros(cod,nom,dir);
+	                        
+	                        datos[i]=new Centros(cod,tip,nom,dir,tel,num);
 	                        i++;       
 	                }
 	                while (rs.moveToNext());
@@ -111,13 +119,19 @@ private Centros[] datos;
 				Intent intent = new Intent(ConsultaCentros.this, MostrarCentro.class);
 				
 				Bundle b = new Bundle();
-				String codigocentro =((Centros)parent.getAdapter().getItem(position)).getCodCentro();
-				String nombrecentro=((Centros)parent.getAdapter().getItem(position)).getNomCentro();
-				String direccion=((Centros)parent.getAdapter().getItem(position)).getDireccion();
+				String codigocentro = ((Centros)parent.getAdapter().getItem(position)).getCodCentro();
+				String tipocentro = ((Centros)parent.getAdapter().getItem(position)).getTipoCentro();
+				String nombrecentro = ((Centros)parent.getAdapter().getItem(position)).getNomCentro();
+				String direccion = ((Centros)parent.getAdapter().getItem(position)).getDireccion();
+				String telefono = ((Centros)parent.getAdapter().getItem(position)).getTelefono();
+				String numplazas = ((Centros)parent.getAdapter().getItem(position)).getNumPlazas();
 				
 				b.putString("Codigo", codigocentro);
 				b.putString("Nombre", nombrecentro);
 				b.putString("Direccion", direccion);
+				b.putString("Tipo", tipocentro);
+				b.putString("Telefono", telefono);
+				b.putString("NumPlazas", numplazas);
 				  				
 				intent.putExtras(b);
 				
@@ -135,8 +149,22 @@ private Centros[] datos;
 			
 			
 		});
-	
 		
+		
+		Button insertar = (Button)findViewById(R.id.insertarCentro);
+		
+		insertar.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(ConsultaCentros.this, InsertarCentros.class);
+				
+				startActivityForResult(intent, CODIGO_RESPUESTA);
+				
+			}
+		});
+			
+				
 	}
 	
 	protected void onActivityResult(int requestCode,int resultCode, Intent pData)            

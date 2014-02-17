@@ -18,9 +18,10 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		Button buttonProfesores = (Button)findViewById(R.id.Proferores);
+		Button buttonProfesores = (Button)findViewById(R.id.Profesores);
 		Button buttonCentros = (Button)findViewById(R.id.Centros);
 		Button buttonPersonal = (Button)findViewById(R.id.Personal);
+		Button buttonConsultas = (Button)findViewById(R.id.Consultas);
 		
 		
 //		CreaBase base = new CreaBase(this,"dbase",null,1);
@@ -54,6 +55,17 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(MainActivity.this, ConsultaCentros.class);
+					
+				startActivity(intent);
+				
+			}
+		});
+		
+		buttonConsultas.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, Consultas.class);
 					
 				startActivity(intent);
 				

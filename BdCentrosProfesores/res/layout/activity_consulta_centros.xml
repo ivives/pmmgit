@@ -10,8 +10,22 @@
     
     <Spinner android:id="@+id/centros"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content" />
+		android:layout_height="wrap_content" 
+		android:layout_below="@+id/insertarCentro" />
 
-    
+    <Button
+         android:id="@+id/insertarCentro"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentTop="true"
+         android:text="Insertar" />
+
+     <Button
+         android:id="@+id/consultas"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignTop="@+id/insertarCentro"
+         android:layout_toRightOf="@+id/insertarCentro"
+         android:text="Consultas" />
      
 </RelativeLayout>

@@ -8,11 +8,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MostrarCentro" >
 
-    <TextView
+     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10px"
+        android:layout_marginTop="20px"
         android:text="Codigo centro:" />
 
     <EditText
@@ -25,12 +25,30 @@
 		
         android:ems="10" />
     
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="20px"
+        android:text="Tipo centro:" />
+
+    <EditText
+        android:id="@+id/tipoCentro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_toRightOf="@+id/textView4"
+        android:layout_marginTop="20px"
+        android:ems="10" />
+    
      <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="10px"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="20px"
         android:text="Nombre centro:" />
 
     <EditText
@@ -40,7 +58,7 @@
         android:layout_alignBaseline="@+id/textView2"
         android:layout_alignBottom="@+id/textView2"
         android:layout_toRightOf="@+id/textView2"
-        android:layout_marginTop="10px"
+        android:layout_marginTop="20px"
         android:ems="10" />
     
      <TextView
@@ -48,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
-        android:layout_marginTop="10px"
+        android:layout_marginTop="20px"
         android:text="Direccion centro:" />
 
     <EditText
@@ -58,17 +76,53 @@
         android:layout_alignBaseline="@+id/textView3"
         android:layout_alignBottom="@+id/textView3"
         android:layout_toRightOf="@+id/textView3"
-        android:layout_marginTop="10px"
+        android:layout_marginTop="20px"
         android:ems="10" />
     
-    <Button 
+     <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="20px"
+        android:text="Telefono centro:" />
+
+    <EditText
+        android:id="@+id/telefonoCentro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView5"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_marginTop="20px"
+        android:ems="10" />
+    
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView5"
+        android:layout_marginTop="20px"
+        android:text="Numero plazas:" />
+
+    <EditText
+        android:id="@+id/numeroplazas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView6"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_toRightOf="@+id/textView6"
+        android:layout_marginTop="20px"
+        android:ems="10" />
+
+    <Button
         android:id="@+id/guardarCentro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100px"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/codigoCentro"
         android:text="Guardar" />
 
-        
-   
+     
 
 </RelativeLayout>

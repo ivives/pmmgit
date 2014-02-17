@@ -6,11 +6,23 @@
     <string name="profesores">Profesores</string>
     <string name="personal">Personal</string>
     <string name="centros">Centros</string>
+    <string name="consultas">Consultas</string>
     <string name="title_activity_profesores">Profesores</string>
     <string name="lista_vacia">La lista esta vacia</string>
     <string name="title_activity_personal">Personal</string>
     <string name="title_activity_centros">Centros</string>
-    <string name="title_activity_mostrar_centro">MostrarCentro</string>
+    <string name="title_activity_mostrar_centro">Editar Centro</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_insertar_centros">InsertarCentros</string>
+    <string name="title_activity_consulta_personal">ConsultaPersonal</string>
+    <string name="title_activity_mostrar_personal">MostrarPersonal</string>
+    <string name="title_activity_insertar_personal">InsertarPersonal</string>
+    <string name="title_activity_consulta_profesores">ConsultaProfesores</string>
+    <string name="title_activity_mostrar_profesores">MostrarProfesores</string>
+    <string name="title_activity_consultas">Consultas</string>
+    <string name="title_activity_salario_mayor">SalarioMayor</string>
+    <string name="title_activity_salario_menor">SalarioMenor</string>
+    <string name="title_activity_mayor_salario_grupo">MayorSalarioGrupo</string>
+    <string name="title_activity_menor_salario_grupo">MenorSalarioGrupo</string>
 
 </resources>

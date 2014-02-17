@@ -13,25 +13,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="50dp"
         android:text="@string/centros" />
 
     <Button
         android:id="@+id/Personal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/Centros"
-        android:layout_alignLeft="@+id/Centros"
-        android:layout_marginBottom="20dp"
+        android:layout_below="@+id/Centros"
+        android:layout_marginTop="20dp"
         android:text="@string/personal" />
 
     <Button
-        android:id="@+id/Proferores"
+        android:id="@+id/Profesores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/Personal"
-        android:layout_alignLeft="@+id/Personal"
-        android:layout_marginBottom="20dp"
+        android:layout_below="@+id/Personal"
+        android:layout_marginTop="20dp"
         android:text="@string/profesores" />
+    
+    <Button
+        android:id="@+id/Consultas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Profesores"
+        android:layout_marginTop="20dp"
+        android:text="@string/consultas" />
 
 </RelativeLayout>
