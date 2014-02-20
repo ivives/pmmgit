@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,11 +17,19 @@ public class MainActivity extends Activity {
 
 	private Button boton;
 	private TextView texto;
+	
+	
+	
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+    	
+    	StrictMode.setThreadPolicy(policy);
+        
         boton = (Button)findViewById(R.id.Boton1);
         texto = (TextView)findViewById(R.id.texto1);
         
@@ -30,7 +40,7 @@ public class MainActivity extends Activity {
         			String noticias = buscarNoticias();
         			texto.append(noticias);
         		} catch (Exception e) {
-        			texto.append("Error al conectar");
+        			texto.append("Error al conectar" + e);
         			e.printStackTrace();
         		}
         	}
@@ -47,7 +57,7 @@ public class MainActivity extends Activity {
     	HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
     	//Añadimos una cabecera HTTP para que identificarnos y evitar obtener un error de aquellos
     	//servidores que prohiben la respuesta a aquellos clientes que no se identifican.
-    	conexion.setRequestProperty("User-Agent", "Mozilla/5.0" + " (Linux; Android 1.5; es-ES) Ejemplo HTTP");
+    	conexion.setRequestProperty("User-Agent", "Mozilla/5.0" + " (Linux; Android 1.5; es-ES) EjemploHttpNoticias");
 	    	
     	if (conexion.getResponseCode() == HttpURLConnection.HTTP_OK) {
     		BufferedReader lector = new BufferedReader (

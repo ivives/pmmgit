@@ -178,7 +178,7 @@ public class ConsultaCentros extends Activity {
 
                     SQLiteDatabase db=base.getWritableDatabase();
                     db.execSQL(dato);
-                    
+                                                           
                     Intent intent = new Intent(ConsultaCentros.this, ConsultaCentros.class);
                     finish();
                     startActivity(intent);
