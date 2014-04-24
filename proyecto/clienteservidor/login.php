@@ -9,7 +9,7 @@
  #Conexion a la base de datos
  $DB_SERVER="localhost";
  $DB_USER="root";
- $DB_PASS=""; #Modificar esta linea si se ha establecido una contraseña para el usuario root en MySQL
+ $DB_PASS=""; #Modificamos esta linea si se ha establecido una contraseña para el usuario root en MySQL
  $DB_DATABASE="supermercado";
  $con = mysqli_connect($DB_SERVER, $DB_USER, $DB_PASS, $DB_DATABASE);
 
