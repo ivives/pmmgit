@@ -19,13 +19,31 @@
         android:textColor="@android:color/white"
          />
     
+          
      <TextView
-        android:id="@+id/lblCodigo"
-        android:layout_width="fill_parent"
+        android:id="@+id/textoCodigo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="50dp"
-        
-         />
+        android:layout_marginTop="70dp"
+        android:text="Codigo:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textoDescripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textoCodigo"
+        android:layout_below="@+id/textoCodigo"
+        android:text="Descripcion:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textoPrecio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textoCodigo"
+        android:layout_below="@+id/textoDescripcion"
+        android:text="Precio:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

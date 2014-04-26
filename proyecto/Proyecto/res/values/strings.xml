@@ -7,6 +7,7 @@
     <string name="escanear">Escanear</string>
     <string name="compra">Comenzar</string>
     <string name="title_activity_lector">Mi carrito</string>
-    
+    <string name="title_activity_consulta">Consulta</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
