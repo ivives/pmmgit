@@ -52,11 +52,10 @@ public class MainActivity extends Activity {
 		precio = (TextView) findViewById(R.id.textoPrecio);
 		
 
-		//Setup the Button's OnClickListener
 		botonBuscar.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//Get the data
+				//Obtenemos los datos
 				DoPOST mDoPOST = new DoPOST(MainActivity.this, codigoBusqueda.getText().toString());
 				mDoPOST.execute("");
 				botonBuscar.setEnabled(false);
@@ -77,7 +76,7 @@ public class MainActivity extends Activity {
 		Context mContext = null;
 		String strCodeToSearch = "";
 		
-		//Result data
+		//Los datos resultantes
 		String strCodigo;
 		String strDescripcion;
 		double douPrecio;
@@ -95,15 +94,14 @@ public class MainActivity extends Activity {
 
 			try{
 
-				//Setup the parameters
+				//Configuracion de los parametros
 				ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 				nameValuePairs.add(new BasicNameValuePair("CodeToSearch", strCodeToSearch));	
-				//Add more parameters as necessary
-
-				//Create the HTTP request
+				
+				//Creacion de la peticion HTTP
 				HttpParams httpParameters = new BasicHttpParams();
 
-				//Setup timeouts
+				//Tiempos de espera para la peticion
 				HttpConnectionParams.setConnectionTimeout(httpParameters, 15000);
 				HttpConnectionParams.setSoTimeout(httpParameters, 15000);			
 
@@ -115,10 +113,10 @@ public class MainActivity extends Activity {
 
 				String result = EntityUtils.toString(entity);
 
-				// Create a JSON object from the request response
+				// Creamos un objeto JSON con la respuesta de la peticion
 				JSONObject jsonObject = new JSONObject(result);
 
-				//Retrieve the data from the JSON object
+				//Recuperamos los datos del objeto JSON
 				strCodigo = jsonObject.getString("codigo");
 				strDescripcion = jsonObject.getString("descripcion");
 				douPrecio = jsonObject.getDouble("precio");
@@ -134,7 +132,7 @@ public class MainActivity extends Activity {
 
 		@Override
 		protected void onPostExecute(Boolean valid){
-			//Update the UI
+			//Actualizamos la interfaz de usuario
 			codigo.setText("Codigo: " + strCodigo);
 			descripcion.setText("Descripcion: " + strDescripcion);
 			precio.setText("Precio: " + douPrecio);

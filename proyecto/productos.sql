@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-04-2014 a las 22:48:21
+-- Tiempo de generación: 26-04-2014 a las 22:39:51
 -- Versión del servidor: 5.5.34
 -- Versión de PHP: 5.4.22
 
@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
 
 INSERT INTO `productos` (`codigo`, `descripcion`, `precio`) VALUES
 (3600541238961, 'Mascarilla Fructis Garnier', 4.5),
+(3700123300236, 'Agua Aquarel 6x33cl', 1.5),
 (4015600715755, 'Ariel Actilift 30 lavados', 6.99),
 (5029053038001, 'Scottex 24 uds.', 6.95),
 (5449000000996, 'Lata CocaCola', 0.56),
@@ -47,6 +48,8 @@ INSERT INTO `productos` (`codigo`, `descripcion`, `precio`) VALUES
 (5449000131805, 'Lata CocaCola cero', 0.56),
 (5906747316013, 'Osito Lulu Fontaneda', 1.7),
 (7622210055828, 'Queso porciones El Caserio 24 uds.', 2.3),
+(8410014232335, 'ColaCao 3 kg', 14.95),
+(8410014308610, 'Nocilla 400 g', 2.5),
 (8410055150018, 'Agua Font Vella 1.5 litros', 0.53),
 (8410069006585, 'Gallo Helices con vegetales', 1.05),
 (8410069010803, 'Gallo Corazones con vegetales', 1.05),
@@ -63,6 +66,7 @@ INSERT INTO `productos` (`codigo`, `descripcion`, `precio`) VALUES
 (8410500006273, 'Vitalinea Danone limon 4 uds.', 1),
 (8410714102129, 'Azucar 1 Kg', 0.93),
 (8411384005062, '12 huevos frescos tamano L', 1.49),
+(8411831500164, 'Vinagre de Modena 250 ml', 1.59),
 (8412500927992, 'Pate La Piara 3 latas', 2.85),
 (8480000180025, 'Atun en aceite de oliva 6 latas', 3.95),
 (8480000260390, 'Garbanzos bote 300 gr.', 0.43),
@@ -70,6 +74,7 @@ INSERT INTO `productos` (`codigo`, `descripcion`, `precio`) VALUES
 (8480000478160, 'Toallitas humedas Wc', 1.95),
 (8480000497505, 'Bolsas basura cierra facil 40 uds.', 1.6),
 (8480000771155, 'Bastoncillos de algodon', 0.55),
+(8712000010294, 'Heineken p-8 latas', 4.4),
 (8722700090366, 'Crema de verduras mediterraneas Knorr', 1.45),
 (8722700090571, 'Crema calabaza Knorr', 1.45),
 (8722700179337, 'Crema de zanahoria Knorr', 1.45),
