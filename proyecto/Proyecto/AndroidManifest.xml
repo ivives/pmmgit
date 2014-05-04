@@ -27,10 +27,7 @@
             android:name="com.example.proyecto.Lector"
             android:label="@string/title_activity_lector" >
         </activity>
-        <activity
-            android:name="com.example.proyecto.Consulta"
-            android:label="@string/title_activity_consulta" >
-        </activity>
+        
     </application>
 
 </manifest>

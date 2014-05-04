@@ -17,6 +17,7 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
+
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -28,10 +29,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,20 +49,41 @@ public class Lector extends Activity {
 	  private Button boton;
 	  private Activity activity;
 	  private String contents;
-	  private TextView codigo;
-	  private TextView descripcion;
-	  private TextView precio;
+	  
+	  
+	  
+	  
+	  //ArrayList<Producto> lista = new ArrayList<Producto>();
+	  
+	  
+	  
+	  
+	//Los datos resultantes
+		String strCodigo;
+		String strDescripcion;
+		double douPrecio;
+		
+	  
+	  TableLayout tabla;  
+	  TableLayout cabecera;  
+	  TableRow.LayoutParams layoutFila;  
+	  TableRow.LayoutParams layoutTexto;
+	  TableRow.LayoutParams layoutPrecio;
+	  TableRow.LayoutParams layoutCantidad;
+	  
+	  private int MAX_FILAS = 10;  
+	  
+	  Resources rs; 
+	  
+	  
 @Override
 public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    activity=this;
-    setContentView(R.layout.activity_lector);
+  super.onCreate(savedInstanceState);
+  activity=this;
+  setContentView(R.layout.activity_lector);
 	       
 	    boton=(Button)findViewById(R.id.button1);
-	    codigo = (TextView) findViewById(R.id.textoCodigo);
-		descripcion = (TextView) findViewById(R.id.textoDescripcion);
-		precio = (TextView) findViewById(R.id.textoPrecio);
-	    
+	  
 	    boton.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -68,22 +95,33 @@ public void onCreate(Bundle savedInstanceState) {
 			      showDownloadDialog();
 			    } else startActivityForResult(intentScan, REQUEST_CODE);
 			}
-		});                        
+		});
+	    
+	    rs = this.getResources();  
+      tabla = (TableLayout)findViewById(R.id.tabla);  
+      cabecera = (TableLayout)findViewById(R.id.cabecera);  
+      layoutFila = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,  
+                                             TableRow.LayoutParams.WRAP_CONTENT);  
+      layoutTexto = new TableRow.LayoutParams(300,TableRow.LayoutParams.WRAP_CONTENT);
+      layoutPrecio = new TableRow.LayoutParams(80,TableRow.LayoutParams.WRAP_CONTENT);
+      layoutCantidad = new TableRow.LayoutParams(100,TableRow.LayoutParams.WRAP_CONTENT);
+      agregarCabecera();  
+     
 }
 
 private String findTargetAppPackage(Intent intent) {
-    PackageManager pm = activity.getPackageManager();
-    List<ResolveInfo> availableApps = pm.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
-    if (availableApps != null) {
-      for (ResolveInfo availableApp : availableApps) {
-        String packageName = availableApp.activityInfo.packageName;
-        if (BS_PACKAGE.contains(packageName)) {
-          return packageName;
-        }
+  PackageManager pm = activity.getPackageManager();
+  List<ResolveInfo> availableApps = pm.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+  if (availableApps != null) {
+    for (ResolveInfo availableApp : availableApps) {
+      String packageName = availableApp.activityInfo.packageName;
+      if (BS_PACKAGE.contains(packageName)) {
+        return packageName;
       }
     }
-    return null;
   }
+  return null;
+}
 private AlertDialog showDownloadDialog() {
 	  final String DEFAULT_TITLE = "Instalar Barcode Scanner?";
 	  final String DEFAULT_MESSAGE =
@@ -91,39 +129,34 @@ private AlertDialog showDownloadDialog() {
 	  final String DEFAULT_YES = "Si";
 	  final String DEFAULT_NO = "No";
 
-    AlertDialog.Builder downloadDialog = new AlertDialog.Builder(activity);
-    downloadDialog.setTitle(DEFAULT_TITLE);
-    downloadDialog.setMessage(DEFAULT_MESSAGE);
-    downloadDialog.setPositiveButton(DEFAULT_YES, new DialogInterface.OnClickListener() {
-      @Override
-      public void onClick(DialogInterface dialogInterface, int i) {
-        Uri uri = Uri.parse("market://details?id=" + BS_PACKAGE);
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        try {
-          activity.startActivity(intent);
-        } catch (ActivityNotFoundException anfe) {
-            // Hmm, market is not installed
-        	Toast.makeText(Lector.this, "Android market no esta instalado,no puedo instalar Barcode Scanner", Toast.LENGTH_LONG).show();
-        }
+  AlertDialog.Builder downloadDialog = new AlertDialog.Builder(activity);
+  downloadDialog.setTitle(DEFAULT_TITLE);
+  downloadDialog.setMessage(DEFAULT_MESSAGE);
+  downloadDialog.setPositiveButton(DEFAULT_YES, new DialogInterface.OnClickListener() {
+    @Override
+    public void onClick(DialogInterface dialogInterface, int i) {
+      Uri uri = Uri.parse("market://details?id=" + BS_PACKAGE);
+      Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+      try {
+        activity.startActivity(intent);
+      } catch (ActivityNotFoundException anfe) {
+          // Hmm, market is not installed
+      	Toast.makeText(Lector.this, "Android market no esta instalado,no puedo instalar Barcode Scanner", Toast.LENGTH_LONG).show();
       }
-    });
-    downloadDialog.setNegativeButton(DEFAULT_NO, new DialogInterface.OnClickListener() {
-      @Override
-      public void onClick(DialogInterface dialogInterface, int i) {}
-    });
-    return downloadDialog.show();
-  }
+    }
+  });
+  downloadDialog.setNegativeButton(DEFAULT_NO, new DialogInterface.OnClickListener() {
+    @Override
+    public void onClick(DialogInterface dialogInterface, int i) {}
+  });
+  return downloadDialog.show();
+}
 
 	  public void onActivityResult(int requestCode, int resultCode, Intent intent ) {
 		    if (requestCode == REQUEST_CODE) {
 		        if (resultCode == Activity.RESULT_OK) {
-		          contents = intent.getStringExtra("SCAN_RESULT");
-		          String formatName = intent.getStringExtra("SCAN_RESULT_FORMAT");
-		          byte[] rawBytes = intent.getByteArrayExtra("SCAN_RESULT_BYTES");
-		          int intentOrientation = intent.getIntExtra("SCAN_RESULT_ORIENTATION", Integer.MIN_VALUE);
-		          Integer orientation = intentOrientation == Integer.MIN_VALUE ? null : intentOrientation;
-		          String errorCorrectionLevel = intent.getStringExtra("SCAN_RESULT_ERROR_CORRECTION_LEVEL");
-		          Toast.makeText(this, contents, Toast.LENGTH_LONG).show();
+		        	contents = intent.getStringExtra("SCAN_RESULT");
+		        	Toast.makeText(this, contents, Toast.LENGTH_LONG).show();
 
 		          	  		
 					//Obtenemos los datos
@@ -140,13 +173,7 @@ private AlertDialog showDownloadDialog() {
 
 			Context mContext = null;
 			String strCodeToSearch = "";
-			
-			//Los datos resultantes
-			String strCodigo;
-			String strDescripcion;
-			double douPrecio;
-			
-			
+						
 			Exception exception = null;
 			
 			DoPOST(Context context, String codeToSearch){
@@ -171,7 +198,8 @@ private AlertDialog showDownloadDialog() {
 					HttpConnectionParams.setSoTimeout(httpParameters, 15000);			
 
 					HttpClient httpclient = new DefaultHttpClient(httpParameters);
-					HttpPost httppost = new HttpPost("http://192.168.1.103/clienteservidor/login.php");
+					HttpPost httppost = new HttpPost("http://192.168.1.103/clienteservidor/login.php");//local
+					//HttpPost httppost = new HttpPost("http://ivivesdam.zz.mu/clienteservidor/login.php");//185.28.20.38
 					httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));        
 					HttpResponse response = httpclient.execute(httppost);
 					HttpEntity entity = response.getEntity();
@@ -186,6 +214,14 @@ private AlertDialog showDownloadDialog() {
 					strDescripcion = jsonObject.getString("descripcion");
 					douPrecio = jsonObject.getDouble("precio");
 					
+					
+										
+					
+					
+					
+					//lista.add(new Producto('"'+strCodigo+'"', '"'+strDescripcion+'"', '"'+douPrecio+'"', '1'));
+									
+										
 
 				}catch (Exception e){
 					Log.e("ClienteServidor", "Error:", e);
@@ -199,15 +235,104 @@ private AlertDialog showDownloadDialog() {
 			protected void onPostExecute(Boolean valid){
 				//Actualizamos la interfaz de usuario
 				
-				codigo.setText("Codigo: " + strCodigo);
-				descripcion.setText("Descripcion: " + strDescripcion);
-				precio.setText("Precio: " + douPrecio);	
-								
+				agregarFilasTabla();
+				
+				
 				if(exception != null){
 					Toast.makeText(mContext, exception.getMessage(), Toast.LENGTH_LONG).show();
 				}
 			}
 
 		}
-	  	  
+	  
+	  
+	  public void agregarCabecera(){  
+		     TableRow fila;  
+		     TextView txtDescripcion ;
+		     TextView txtPrecio ;
+		     TextView txtCantidad ;
+		  
+		     fila = new TableRow(this);  
+			 fila.setLayoutParams(layoutFila);  
+			  
+			 txtDescripcion = new TextView(this);
+			 txtPrecio = new TextView(this);
+			 txtCantidad = new TextView(this);
+		  
+			 txtDescripcion.setText(rs.getString(R.string.descrip));  
+			 txtDescripcion.setGravity(Gravity.CENTER_HORIZONTAL);  
+			 txtDescripcion.setTextAppearance(this,R.style.etiqueta);  
+			 txtDescripcion.setBackgroundResource(R.drawable.tabla_celda_cabecera);  
+			 txtDescripcion.setLayoutParams(layoutTexto);
+			 
+			 txtPrecio.setText(rs.getString(R.string.valor));  
+			 txtPrecio.setGravity(Gravity.CENTER_HORIZONTAL);  
+			 txtPrecio.setTextAppearance(this,R.style.etiqueta);  
+			 txtPrecio.setBackgroundResource(R.drawable.tabla_celda_cabecera);  
+			 txtPrecio.setLayoutParams(layoutPrecio);
+			 
+			 txtCantidad.setText(rs.getString(R.string.canti));
+			 txtCantidad.setGravity(Gravity.CENTER_HORIZONTAL);
+			 txtCantidad.setTextAppearance(this,R.style.etiqueta);
+			 txtCantidad.setBackgroundResource(R.drawable.tabla_celda_cabecera);
+			 txtCantidad.setLayoutParams(layoutCantidad);
+		  
+			 fila.addView(txtDescripcion);
+			 fila.addView(txtPrecio);
+			 fila.addView(txtCantidad);
+			 cabecera.addView(fila);  
+	  }  
+		  
+		 public void agregarFilasTabla(){  
+		  
+		     TableRow fila;  
+		     TextView txtDescripcion;
+		     TextView txtPrecio;
+		     TextView txtCantidad;
+		     
+		     
+		     
+		    // for(int i=0; i<lista.size(); i++){
+		    	
+		    	// String douPrecio2 = String.valueOf(lista.get(i).getPrecio());
+		     	String douPrecio2 = String.valueOf(douPrecio);
+		    	  
+		         fila = new TableRow(this);  
+		         fila.setLayoutParams(layoutFila);  
+		  
+		         txtDescripcion = new TextView(this);
+		         txtPrecio = new TextView(this);
+		         txtCantidad = new EditText(this);
+		  
+		        // txtDescripcion.setText(lista.get(i).getDescripcion());
+		         txtDescripcion.setText(strDescripcion);
+		         txtDescripcion.setGravity(Gravity.CENTER_HORIZONTAL);  
+		         txtDescripcion.setTextAppearance(this,R.style.etiqueta);  
+		         txtDescripcion.setBackgroundResource(R.drawable.tabla_celda);  
+		         txtDescripcion.setLayoutParams(layoutTexto);
+		         
+		         txtPrecio.setText(douPrecio2);  
+				 txtPrecio.setGravity(Gravity.CENTER_HORIZONTAL);  
+				 txtPrecio.setTextAppearance(this,R.style.etiqueta);  
+				 txtPrecio.setBackgroundResource(R.drawable.tabla_celda);  
+				 txtPrecio.setLayoutParams(layoutPrecio);
+				 
+				// txtCantidad.setText(lista.get(i).getCantidad());
+				 txtCantidad.setText("1");
+				 txtCantidad.setGravity(Gravity.CENTER_HORIZONTAL);  
+				 txtCantidad.setTextAppearance(this,R.style.etiqueta2);  
+				 txtCantidad.setBackgroundResource(R.drawable.tabla_celda);  
+				 txtCantidad.setLayoutParams(layoutCantidad);
+				 
+		         fila.addView(txtDescripcion);
+		         fila.addView(txtPrecio);
+		         fila.addView(txtCantidad);
+		  
+		         tabla.addView(fila);  
+		    // } 
+		     
+		     
+		    } 
+	  
+	  
 }
