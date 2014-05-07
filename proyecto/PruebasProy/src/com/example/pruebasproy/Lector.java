@@ -1,6 +1,7 @@
 package com.example.pruebasproy;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.http.HttpEntity;
@@ -49,6 +50,14 @@ public class Lector extends Activity {
 	  private Activity activity;
 	  private String contents;
 	  
+	  
+	  
+	  
+	  //ArrayList<Producto> lista = new ArrayList<Producto>();
+	  
+	  
+	  
+	  
 	//Los datos resultantes
 		String strCodigo;
 		String strDescripcion;
@@ -62,8 +71,7 @@ public class Lector extends Activity {
 	  TableRow.LayoutParams layoutPrecio;
 	  TableRow.LayoutParams layoutCantidad;
 	  
-	  private int MAX_FILAS = 10;  
-	  
+	  	  
 	  Resources rs; 
 	  
 	  
@@ -189,7 +197,8 @@ private AlertDialog showDownloadDialog() {
 					HttpConnectionParams.setSoTimeout(httpParameters, 15000);			
 
 					HttpClient httpclient = new DefaultHttpClient(httpParameters);
-					HttpPost httppost = new HttpPost("http://192.168.1.103/clienteservidor/login.php");
+					HttpPost httppost = new HttpPost("http://192.168.1.103/clienteservidor/login.php");//local
+					//HttpPost httppost = new HttpPost("http://ivivesdam.zz.mu/clienteservidor/login.php");//185.28.20.38
 					httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));        
 					HttpResponse response = httpclient.execute(httppost);
 					HttpEntity entity = response.getEntity();
@@ -204,6 +213,14 @@ private AlertDialog showDownloadDialog() {
 					strDescripcion = jsonObject.getString("descripcion");
 					douPrecio = jsonObject.getDouble("precio");
 					
+					
+										
+					
+					
+					
+					//lista.add(new Producto('"'+strCodigo+'"', '"'+strDescripcion+'"', '"'+douPrecio+'"', '1'));
+									
+										
 
 				}catch (Exception e){
 					Log.e("ClienteServidor", "Error:", e);
@@ -230,9 +247,9 @@ private AlertDialog showDownloadDialog() {
 	  
 	  public void agregarCabecera(){  
 		     TableRow fila;  
-		     TextView txtDescripcion;
-		     TextView txtPrecio;
-		     TextView txtCantidad;
+		     TextView txtDescripcion ;
+		     TextView txtPrecio ;
+		     TextView txtCantidad ;
 		  
 		     fila = new TableRow(this);  
 			 fila.setLayoutParams(layoutFila);  
@@ -270,11 +287,15 @@ private AlertDialog showDownloadDialog() {
 		     TableRow fila;  
 		     TextView txtDescripcion;
 		     TextView txtPrecio;
-		     EditText txtCantidad;
-		     String douPrecio2 = String.valueOf(douPrecio);
-		  
-//		     for(int i = 0;i<MAX_FILAS;i++){  
-//		         int posicion = i + 1;  
+		     TextView txtCantidad;
+		     
+		     
+		     
+		    // for(int i=0; i<lista.size(); i++){
+		    	
+		    	// String douPrecio2 = String.valueOf(lista.get(i).getPrecio());
+		     	String douPrecio2 = String.valueOf(douPrecio);
+		    	  
 		         fila = new TableRow(this);  
 		         fila.setLayoutParams(layoutFila);  
 		  
@@ -282,7 +303,8 @@ private AlertDialog showDownloadDialog() {
 		         txtPrecio = new TextView(this);
 		         txtCantidad = new EditText(this);
 		  
-		         txtDescripcion.setText(strDescripcion);  
+		        // txtDescripcion.setText(lista.get(i).getDescripcion());
+		         txtDescripcion.setText(strDescripcion);
 		         txtDescripcion.setGravity(Gravity.CENTER_HORIZONTAL);  
 		         txtDescripcion.setTextAppearance(this,R.style.etiqueta);  
 		         txtDescripcion.setBackgroundResource(R.drawable.tabla_celda);  
@@ -294,6 +316,8 @@ private AlertDialog showDownloadDialog() {
 				 txtPrecio.setBackgroundResource(R.drawable.tabla_celda);  
 				 txtPrecio.setLayoutParams(layoutPrecio);
 				 
+				// txtCantidad.setText(lista.get(i).getCantidad());
+				 txtCantidad.setText("1");
 				 txtCantidad.setGravity(Gravity.CENTER_HORIZONTAL);  
 				 txtCantidad.setTextAppearance(this,R.style.etiqueta2);  
 				 txtCantidad.setBackgroundResource(R.drawable.tabla_celda);  
@@ -304,7 +328,9 @@ private AlertDialog showDownloadDialog() {
 		         fila.addView(txtCantidad);
 		  
 		         tabla.addView(fila);  
-		    // }  
+		    // } 
+		     
+		     
 		    } 
 	  
 	  
