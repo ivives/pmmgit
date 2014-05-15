@@ -5,14 +5,16 @@ public class Producto {
 	
 		public String codigo;
 		public String descripcion;
-		public Double precio;
+		public double precio;
 		public int cantidad;
+//		public String total;
 
 	    public Producto(String codigo, String descripcion, double precio, int cantidad) {
 	        this.codigo = codigo;
 	        this.descripcion = descripcion;
 	        this.precio = precio;
 	        this.cantidad = cantidad;
+//	        this.total = total;
 	    }
 
 	   
@@ -38,10 +40,15 @@ public class Producto {
 	    	this.cantidad = cantidad;
 	    }
 	    
-	    public String toString() {
-	        return "["+this.getDescripcion()+"] ["+this.getPrecio()+"] ["+this.getCantidad()+"]";
-	    }
+//	    public String getTotal(){
+//	    	return total;
+//	    }
+//	    
+//	    public void setTotal(String total){
+//	    	this.total = total;
+//	    }
 	    
+	  	    
 }  
 	
 

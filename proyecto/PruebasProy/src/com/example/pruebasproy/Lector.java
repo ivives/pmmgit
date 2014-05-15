@@ -1,7 +1,8 @@
 package com.example.pruebasproy;
 
+
 import java.util.ArrayList;
-import java.util.Iterator;
+
 import java.util.List;
 
 import org.apache.http.HttpEntity;
@@ -49,19 +50,20 @@ public class Lector extends Activity {
 	  private Button boton;
 	  private Activity activity;
 	  private String contents;
+	  private TextView textView;
 	  
+	  int cantidad;
+	  double total;
+	  double suma = 0;	  
+	  List<Producto> lista = new ArrayList<Producto>();
 	  
-	  
-	  
-	  //ArrayList<Producto> lista = new ArrayList<Producto>();
-	  
-	  
-	  
+	    
 	  
 	//Los datos resultantes
 		String strCodigo;
 		String strDescripcion;
 		double douPrecio;
+		
 		
 	  
 	  TableLayout tabla;  
@@ -70,7 +72,7 @@ public class Lector extends Activity {
 	  TableRow.LayoutParams layoutTexto;
 	  TableRow.LayoutParams layoutPrecio;
 	  TableRow.LayoutParams layoutCantidad;
-	  
+	  TableRow.LayoutParams layoutTotal;
 	  	  
 	  Resources rs; 
 	  
@@ -80,7 +82,7 @@ public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     activity=this;
     setContentView(R.layout.activity_lector);
-	       
+    	textView = (TextView)findViewById(R.id.txtSuma);  
 	    boton=(Button)findViewById(R.id.button1);
 	  
 	    boton.setOnClickListener(new OnClickListener() {
@@ -101,9 +103,10 @@ public void onCreate(Bundle savedInstanceState) {
         cabecera = (TableLayout)findViewById(R.id.cabecera);  
         layoutFila = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,  
                                                TableRow.LayoutParams.WRAP_CONTENT);  
-        layoutTexto = new TableRow.LayoutParams(300,TableRow.LayoutParams.WRAP_CONTENT);
-        layoutPrecio = new TableRow.LayoutParams(80,TableRow.LayoutParams.WRAP_CONTENT);
-        layoutCantidad = new TableRow.LayoutParams(100,TableRow.LayoutParams.WRAP_CONTENT);
+        layoutTexto = new TableRow.LayoutParams(250,TableRow.LayoutParams.WRAP_CONTENT);
+        layoutPrecio = new TableRow.LayoutParams(70,TableRow.LayoutParams.WRAP_CONTENT);
+        layoutCantidad = new TableRow.LayoutParams(90,TableRow.LayoutParams.WRAP_CONTENT);
+        layoutTotal = new TableRow.LayoutParams(70,TableRow.LayoutParams.WRAP_CONTENT);
         agregarCabecera();  
        
 }
@@ -213,14 +216,15 @@ private AlertDialog showDownloadDialog() {
 					strDescripcion = jsonObject.getString("descripcion");
 					douPrecio = jsonObject.getDouble("precio");
 					
+					cantidad = 1;
+					total = douPrecio * cantidad;
 					
-										
-					
-					
-					
-					//lista.add(new Producto('"'+strCodigo+'"', '"'+strDescripcion+'"', '"'+douPrecio+'"', '1'));
+															
+					lista.add(new Producto('"'+strCodigo+'"', '"'+strDescripcion+'"', '"'+douPrecio+'"', '"'+cantidad+'"'));
 									
 										
+					suma += total;
+					
 
 				}catch (Exception e){
 					Log.e("ClienteServidor", "Error:", e);
@@ -237,6 +241,16 @@ private AlertDialog showDownloadDialog() {
 				agregarFilasTabla();
 				
 				
+//				for(int i=0; i<lista.size(); i++){
+//					double num=Double.valueOf(lista.get(i).getTotal()).doubleValue();
+//					suma += num;
+//				}
+				
+				//String totalSuma = String.valueOf(suma);
+				//String pre = new Double(suma).toString();
+				textView.setText(Double.toString(suma));
+				
+				
 				if(exception != null){
 					Toast.makeText(mContext, exception.getMessage(), Toast.LENGTH_LONG).show();
 				}
@@ -249,7 +263,8 @@ private AlertDialog showDownloadDialog() {
 		     TableRow fila;  
 		     TextView txtDescripcion ;
 		     TextView txtPrecio ;
-		     TextView txtCantidad ;
+		     TextView txtCantidad;
+		     TextView txtTotal;
 		  
 		     fila = new TableRow(this);  
 			 fila.setLayoutParams(layoutFila);  
@@ -257,6 +272,7 @@ private AlertDialog showDownloadDialog() {
 			 txtDescripcion = new TextView(this);
 			 txtPrecio = new TextView(this);
 			 txtCantidad = new TextView(this);
+			 txtTotal = new TextView(this);
 		  
 			 txtDescripcion.setText(rs.getString(R.string.descrip));  
 			 txtDescripcion.setGravity(Gravity.CENTER_HORIZONTAL);  
@@ -275,10 +291,18 @@ private AlertDialog showDownloadDialog() {
 			 txtCantidad.setTextAppearance(this,R.style.etiqueta);
 			 txtCantidad.setBackgroundResource(R.drawable.tabla_celda_cabecera);
 			 txtCantidad.setLayoutParams(layoutCantidad);
+			 
+			 txtTotal.setText(rs.getString(R.string.total));
+			 txtTotal.setGravity(Gravity.CENTER_HORIZONTAL);
+			 txtTotal.setTextAppearance(this,R.style.etiqueta);
+			 txtTotal.setBackgroundResource(R.drawable.tabla_celda_cabecera);
+			 txtTotal.setLayoutParams(layoutTotal);
+			 
 		  
 			 fila.addView(txtDescripcion);
 			 fila.addView(txtPrecio);
 			 fila.addView(txtCantidad);
+			 fila.addView(txtTotal);
 			 cabecera.addView(fila);  
 	  }  
 		  
@@ -288,6 +312,7 @@ private AlertDialog showDownloadDialog() {
 		     TextView txtDescripcion;
 		     TextView txtPrecio;
 		     TextView txtCantidad;
+		     TextView txtTotal;
 		     
 		     
 		     
@@ -302,6 +327,7 @@ private AlertDialog showDownloadDialog() {
 		         txtDescripcion = new TextView(this);
 		         txtPrecio = new TextView(this);
 		         txtCantidad = new EditText(this);
+		         txtTotal = new TextView(this);
 		  
 		        // txtDescripcion.setText(lista.get(i).getDescripcion());
 		         txtDescripcion.setText(strDescripcion);
@@ -316,16 +342,30 @@ private AlertDialog showDownloadDialog() {
 				 txtPrecio.setBackgroundResource(R.drawable.tabla_celda);  
 				 txtPrecio.setLayoutParams(layoutPrecio);
 				 
+				 
+				 String cant = String.valueOf(cantidad);
 				// txtCantidad.setText(lista.get(i).getCantidad());
-				 txtCantidad.setText("1");
+				 txtCantidad.setText(cant);
 				 txtCantidad.setGravity(Gravity.CENTER_HORIZONTAL);  
 				 txtCantidad.setTextAppearance(this,R.style.etiqueta2);  
 				 txtCantidad.setBackgroundResource(R.drawable.tabla_celda);  
 				 txtCantidad.setLayoutParams(layoutCantidad);
 				 
+//				 String c = txtCantidad.getText().toString();
+//				 Double cant = Double.valueOf(c).doubleValue();
+				 Double tot = douPrecio * cantidad;
+				 String totalStr = String.valueOf(tot);
+				 
+				 txtTotal.setText(totalStr);
+				 txtTotal.setGravity(Gravity.CENTER_HORIZONTAL);
+				 txtTotal.setTextAppearance(this,R.style.etiqueta);
+				 txtTotal.setBackgroundResource(R.drawable.tabla_celda);
+				 txtTotal.setLayoutParams(layoutPrecio);
+				 
 		         fila.addView(txtDescripcion);
 		         fila.addView(txtPrecio);
 		         fila.addView(txtCantidad);
+		         fila.addView(txtTotal);
 		  
 		         tabla.addView(fila);  
 		    // } 

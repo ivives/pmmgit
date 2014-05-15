@@ -9,9 +9,11 @@
     <string name="title_activity_lector">Mi carrito</string>
     <string name="title_activity_consulta">Consulta</string>
     <string name="hello_world">Hello world!</string>
-	<string name="id">Codigo</string>  
+    <string name="id">Codigo</string>
     <string name="descrip">Descripcion</string>
     <string name="valor">Precio</string>
     <string name="canti">Cantidad</string>
-    <string name="total">Total</string>	
+    <string name="total">Total</string>
+    <string name="title_activity_carrito">Carrito</string>
+
 </resources>
