@@ -14,5 +14,8 @@
     <string name="canti">Cantidad</string>
     <string name="total">Total</string>
     <string name="title_activity_carrito">Carrito</string>
-	<string name="cabecera">Mi lista de la compra</string>
+    <string name="cabecera">Mi lista de la compra</string>
+    <string name="title_activity_mostrar_producto">MostrarProducto</string>
+    <string name="hello_world">Hello world!</string>
+
 </resources>

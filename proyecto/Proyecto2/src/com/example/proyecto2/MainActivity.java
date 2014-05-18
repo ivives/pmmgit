@@ -1,6 +1,4 @@
-package com.example.proyecto;
-
-import com.example.pruebasproy2.R;
+package com.example.proyecto2;
 
 import android.os.Bundle;
 import android.app.Activity;

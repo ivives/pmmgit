@@ -1,4 +1,4 @@
-package com.example.proyecto;
+package com.example.proyecto2;
 
 
 
@@ -18,13 +18,6 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
-
-
-
-
-
-
-import com.example.pruebasproy2.R;
 
 import android.net.Uri;
 import android.os.AsyncTask;

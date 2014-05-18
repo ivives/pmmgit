@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pruebasproy2"
+    package="com.example.proyecto2"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="18" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.proyecto.MainActivity"
+            android:name="com.example.proyecto2.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,22 +25,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.proyecto.Carrito"
+            android:name="com.example.proyecto2.Carrito"
             android:label="@string/title_activity_carrito" >
         </activity>
         <activity
-            android:name="com.example.proyecto.Lector"
+            android:name="com.example.proyecto2.Lector"
             android:label="@string/title_activity_lector" >
         </activity>
         <activity
-            android:name="com.example.proyecto.Producto"
+            android:name="com.example.proyecto2.Producto"
             android:label="@string/title_activity_lector" >
         </activity>
         <activity
-            android:name="com.example.proyecto.CreaBase"
+            android:name="com.example.proyecto2.CreaBase"
             android:label="@string/title_activity_lector" >
         </activity>
-        
+        <activity
+            android:name="com.example.proyecto2.MostrarProducto"
+            android:label="@string/title_activity_mostrar_producto" >
+        </activity>
     </application>
 
 </manifest>
