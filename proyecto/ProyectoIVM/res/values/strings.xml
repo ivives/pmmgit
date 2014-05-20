@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Mi carrito</string>
+    <string name="action_settings">Settings</string>
+    <string name="titulo">Mi carrito de la\nCompra</string>
+    <string name="escanear">Escanear</string>
+    <string name="compra">Comenzar</string>
+    <string name="title_activity_lector">Mi carrito</string>
+    <string name="title_activity_consulta">Consulta</string>
+    <string name="id">Codigo</string>
+    <string name="descrip">Descripcion</string>
+    <string name="valor">Precio</string>
+    <string name="canti">Cantidad</string>
+    <string name="total">Total</string>
+    <string name="title_activity_carrito">Carrito</string>
+    <string name="cabecera">Mi lista de la compra</string>
+    <string name="title_activity_mostrar_producto">Mostrar producto</string>
+    <string name="vaciar">Vaciar lista</string>
+	<string name="eliminar">Eliminar</string>
+	<string name="guardar">Volver</string>
+	<string name="precio">Precio:</string>
+	<string name="cantidad">Cantidad:</string>
+	<string name="descripcion">Descripción:</string>
+</resources>
