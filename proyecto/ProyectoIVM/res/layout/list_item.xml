@@ -9,7 +9,7 @@
     android:layout_height="wrap_content"
     android:layout_weight="3"
     
-    android:textSize="12dp"
+    android:textSize="10dp"
      />
   
   <TextView
@@ -18,7 +18,7 @@
     android:layout_height="wrap_content"
     android:layout_weight="1"
     
-    android:textSize="12dp"    
+    android:textSize="10dp"    
      />
  
   <TextView
@@ -27,7 +27,7 @@
     android:layout_height="wrap_content"
     android:layout_weight="1"
     
-    android:textSize="12dp"
+    android:textSize="10dp"
      />
   
  <TextView
@@ -36,7 +36,7 @@
     android:layout_height="wrap_content"
     android:layout_weight="1"
     
-    android:textSize="12dp"    
+    android:textSize="10dp"    
      />
  
   

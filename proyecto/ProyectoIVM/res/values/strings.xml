@@ -14,12 +14,25 @@
     <string name="canti">Cantidad</string>
     <string name="total">Total</string>
     <string name="title_activity_carrito">Carrito</string>
-    <string name="cabecera">Mi lista de la compra</string>
+    <string name="cabecera">Mi carrito de la compra</string>
     <string name="title_activity_mostrar_producto">Mostrar producto</string>
     <string name="vaciar">Vaciar lista</string>
-	<string name="eliminar">Eliminar</string>
-	<string name="guardar">Volver</string>
-	<string name="precio">Precio:</string>
-	<string name="cantidad">Cantidad:</string>
-	<string name="descripcion">Descripción:</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="guardar">Guardar</string>
+    <string name="precio">Precio:</string>
+    <string name="cantidad">Cantidad:</string>
+    <string name="descripcion">Descripción:</string>
+    <string name="salir">Salir</string>
+    <string name="ayuda">Ayuda</string>
+    <string name="acercade">Acerca de</string>
+    <string name="title_activity_ayuda">Ayuda</string>
+    <string name="ayudacarrito">Pulsar el botón Escanear para añadir un producto a la lista\n
+        						Pulsar el botón Vaciar lista para limpiar todo el contenido de la lista\n
+        						Pulsar sobre un elemento de la lista para editarlo\n
+        						Pulsar el botón Eliminar para eliminar el producto de la lista\n
+        						Modificar la cantidad de producto que se desee y pulsar el bóton Guardar para volver a la lista </string>
+    <string name="title_activity_acercade">Acercade</string>
+    <string name="acercadecarrito">Desarrollada por: Ignacio Vives\nVersión Android: 4.3\nAPI Level 18</string>
+    <string name="volver">Volver</string>
+
 </resources>

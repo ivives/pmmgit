@@ -13,19 +13,19 @@ import android.content.pm.ActivityInfo;
 
 public class MainActivity extends Activity {
 	
-	 // Establecemos la duracion de la splash screen
+	 // Establecemos la duración de la splash screen
     private static final long SPLASH_SCREEN_DELAY = 4000;
     
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 				
-		//Hacemos que la aactividad ocupe toda la pantalla
+		//Hacemos que la actividad ocupe toda la pantalla
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 				
-		//Ponemos la orientacion a portrait (vertical)
+		//Ponemos la orientación a portrait (vertical)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        //Ocultamos la barra del titulo
+        //Ocultamos la barra del título
         requestWindowFeature(Window.FEATURE_NO_TITLE);
  
         setContentView(R.layout.activity_main);
@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
                         MainActivity.this, Carrito.class);
                 startActivity(mainIntent);
  
-                // Cerramos la actividad haciendo que no sea posible volver a ella aunque se apriete el boton de volver atras
+                // Cerramos la actividad haciendo que no sea posible volver a ella aunque se apriete el botón de volver atrás
                 finish();
             }
         };

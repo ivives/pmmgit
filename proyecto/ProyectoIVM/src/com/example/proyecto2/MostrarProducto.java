@@ -3,12 +3,14 @@ package com.example.proyecto2;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MostrarProducto extends Activity {
@@ -25,18 +27,21 @@ public class MostrarProducto extends Activity {
 		Button guardar = (Button)findViewById(R.id.guardarProducto);
 		Button eliminar = (Button)findViewById(R.id.eliminarProducto);
 		
-		// Localizamos los controladores
+		// Localizamos los controladores y les ponemos el tipo de letra
+		Typeface fuente = Typeface.createFromAsset(getAssets(), "gloriahallelujah.ttf");
 		final TextView descripcion = (TextView)findViewById(R.id.descripcion);
+		descripcion.setTypeface(fuente);
 		final TextView precio = (TextView)findViewById(R.id.precio);
-		final TextView cantidad = (TextView)findViewById(R.id.cantidad);
-		
+		precio.setTypeface(fuente);
+		final EditText cantidad = (EditText)findViewById(R.id.cantidad);
+		cantidad.setTypeface(fuente);
 		
 			
-		    
-		    descripcion.setKeyListener(null);
-		    precio.setKeyListener(null);
+		    // hacemos que la descripción y el precio no dean editables
+		 	descripcion.setKeyListener(null);
+		 	precio.setKeyListener(null);
 		    	 
-		// recuperamos informacion del intent
+		// recuperamos información del intent
 		   	 Bundle b = this.getIntent().getExtras();
 		    	 
 		   	 descripcion.setText(b.getString("Descripcion"));
@@ -44,7 +49,7 @@ public class MostrarProducto extends Activity {
 		   	 cantidad.setText(b.getString("Cantidad"));
 		   	 
 		   	 
-		    			   	 
+		//actializamos la cantidad de producto que deseamos   			   	 
 		guardar.setOnClickListener(new OnClickListener() {
 		 			
 		 	@Override
@@ -73,7 +78,8 @@ public class MostrarProducto extends Activity {
 			}
 		});
 		
-		   eliminar.setOnClickListener(new OnClickListener() {
+		//eliminamos el producto seleccionado de la lista	
+		eliminar.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {

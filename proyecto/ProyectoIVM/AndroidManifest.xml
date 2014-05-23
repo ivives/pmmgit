@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.proyecto2"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
     android:versionCode="1"
-    android:versionName="1.0"
-    android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+    android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -44,6 +44,14 @@
         <activity
             android:name="com.example.proyecto2.MostrarProducto"
             android:label="@string/title_activity_mostrar_producto" >
+        </activity>
+        <activity
+            android:name="com.example.proyecto2.Ayuda"
+            android:label="@string/title_activity_ayuda" >
+        </activity>
+        <activity
+            android:name="com.example.proyecto2.Acercade"
+            android:label="@string/title_activity_acercade" >
         </activity>
     </application>
 

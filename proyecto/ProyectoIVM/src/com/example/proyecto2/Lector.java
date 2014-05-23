@@ -57,6 +57,7 @@ public void onCreate(Bundle savedInstanceState) {
     	 
     base = new CreaBase(this,"dbase",null,1);   		
     
+    	//Creamos el intent para llamar al lector de códigos
 		Intent intentScan = new Intent(BS_PACKAGE + ".SCAN");
 		intentScan.putExtra("PROMPT_MESSAGE", "Enfoque entre 9 y 11 cm.viendo solo el codigo de barras");
 		String targetAppPackage = findTargetAppPackage(intentScan);
@@ -81,10 +82,10 @@ private String findTargetAppPackage(Intent intent) {
     }
     return null;
   }
+//Si Barcode Scanner no esta instalado
 private AlertDialog showDownloadDialog() {
 	  final String DEFAULT_TITLE = "Instalar Barcode Scanner?";
-	  final String DEFAULT_MESSAGE =
-	      "Esta aplicacion necesita Barcode Scanner. Quiere instalarla?";
+	  final String DEFAULT_MESSAGE ="Esta aplicacion necesita Barcode Scanner. Quiere instalarla?";
 	  final String DEFAULT_YES = "Si";
 	  final String DEFAULT_NO = "No";
 
@@ -99,7 +100,7 @@ private AlertDialog showDownloadDialog() {
         try {
           activity.startActivity(intent);
         } catch (ActivityNotFoundException anfe) {
-            // Hmm, market is not installed
+            // Si la android market no esta instalada mostramos
         	Toast.makeText(Lector.this, "Android market no esta instalado,no puedo instalar Barcode Scanner", Toast.LENGTH_LONG).show();
         }
       }
@@ -128,7 +129,7 @@ private AlertDialog showDownloadDialog() {
 		      return ;
 	  }
 	  
-	  
+	  //Creamos una tarea asincrónica (asynctask) para hacer en un segundo plano la consulta a la base de datos
 	  public class DoPOST extends AsyncTask<String, Void, Boolean>{
 
 			Context mContext = null;
@@ -141,22 +142,24 @@ private AlertDialog showDownloadDialog() {
 				strCodeToSearch = codeToSearch;
 			}
 
+			//Contendrá el código principal de nuestra tarea
 			@Override
 			protected Boolean doInBackground(String... arg0) {
 
 				try{
 
-					//Configuracion de los parametros
+					//Configuración de los parámetros
 					ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 					nameValuePairs.add(new BasicNameValuePair("CodeToSearch", strCodeToSearch));	
 					
-					//Creacion de la peticion HTTP
+					//Creación de la petición HTTP
 					HttpParams httpParameters = new BasicHttpParams();
 
-					//Tiempos de espera para la peticion
+					//Tiempos de espera para la petición
 					HttpConnectionParams.setConnectionTimeout(httpParameters, 15000);
 					HttpConnectionParams.setSoTimeout(httpParameters, 15000);			
 
+					//Hacemos la petición a la base de datos
 					HttpClient httpclient = new DefaultHttpClient(httpParameters);
 					HttpPost httppost = new HttpPost("http://192.168.1.103/clienteservidor/login.php");//local
 					//HttpPost httppost = new HttpPost("http://ivivesdam.zz.mu/clienteservidor/login.php");//185.28.20.38
@@ -166,7 +169,7 @@ private AlertDialog showDownloadDialog() {
 
 					String result = EntityUtils.toString(entity);
 
-					// Creamos un objeto JSON con la respuesta de la peticion
+					// Creamos un objeto JSON con la respuesta de la petición
 					JSONObject jsonObject = new JSONObject(result);
 
 					//Recuperamos los datos del objeto JSON
@@ -174,25 +177,21 @@ private AlertDialog showDownloadDialog() {
 					strDescripcion = jsonObject.getString("descripcion");
 					douPrecio = jsonObject.getDouble("precio");
 					
-					int cantidad = 1;
 					
+					// Insertamos en la db auxiliar del dispositivo el producto escaneado
+					int cantidad = 1;
 					double total = douPrecio * cantidad;
-						
-//					Intent resultData = new Intent();
-				      
+      
 					String valor = "INSERT INTO Milista VALUES  ('"+strCodigo+"', '"+strDescripcion+"', '"+douPrecio+"', '"+cantidad+"','"+total+"')";
 					
 					 SQLiteDatabase db=base.getWritableDatabase();
 	                    db.execSQL(valor);
-					
-//					resultData.putExtra(DATO_SUBACTIVIDAD, valor);	
-//					setResult(android.app.Activity.RESULT_OK, resultData);
+
 					finish();
 					
 					Intent intent = new Intent(Lector.this, Carrito.class);
   						  					
   					startActivity(intent);
-					
 									
 
 				}catch (Exception e){
@@ -205,9 +204,7 @@ private AlertDialog showDownloadDialog() {
 
 			@Override
 			protected void onPostExecute(Boolean valid){
-				//Actualizamos la interfaz de usuario
-				
-						
+										
 				
 				if(exception != null){
 					Toast.makeText(mContext, exception.getMessage(), Toast.LENGTH_LONG).show();
@@ -215,8 +212,6 @@ private AlertDialog showDownloadDialog() {
 			}
 
 		}
-	  	
-	  
-	    
+
 	  
 }

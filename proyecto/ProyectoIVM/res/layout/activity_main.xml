@@ -7,19 +7,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:background="#CACFE0" >
+    android:background="@drawable/micarrito" >
     
 
         
-    <ImageView 
-        android:id="@+id/imagen"
-        android:src="@drawable/fondo4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="50dp"
-        android:scaleType="fitXY"
-         />
+   
     
     <TextView
         android:id="@+id/portada"
@@ -27,12 +19,14 @@
         android:layout_height="wrap_content"
         android:text="@string/titulo"
         android:layout_below="@+id/imagen"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:textSize="30dp"
-        android:textColor="#003366"
+        android:layout_alignParentBottom="true"
+        
+        android:textSize="35dp"
+        android:textColor="#FF0000"
         android:typeface="serif"
+        android:layout_centerInParent="true"
         android:gravity="center_horizontal"
+        
 		 />
     
     

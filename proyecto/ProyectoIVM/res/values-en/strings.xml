@@ -18,8 +18,20 @@
     <string name="vaciar">Empty list</string>
     <string name="title_activity_mostrar_producto">Show product</string>
     <string name="eliminar">Delete</string>
-	<string name="guardar">Return</string>
+	<string name="guardar">Save</string>
 	<string name="precio">Price:</string>
 	<string name="cantidad">Amount:</string>
-	<string name="descripcion">Description:</string>	
+	<string name="descripcion">Description:</string>
+	<string name="salir">Exit</string>
+	<string name="ayuda">Help</string>
+	<string name="acercade">About</string>
+	<string name="title_activity_ayuda">Help</string>
+    <string name="ayudacarrito">Press the Scan button to add a product to the list\n
+        						Press the Clear list button to clear all contents of the list\n
+        						Click on an item in the list to edit\n
+        						Press the Delete button to remove the product from the list\n
+        						Change the amount of product you want and press the save button to return to the list</string>
+    <string name="title_activity_acercade">About</string>
+    <string name="acercadecarrito">Developed by: Ignacio Vives\nAndroid version: 4.3\nAPI Level 18</string>
+    <string name="volver">Return</string>	
 </resources>

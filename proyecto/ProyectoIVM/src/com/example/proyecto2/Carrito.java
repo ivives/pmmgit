@@ -2,6 +2,7 @@ package com.example.proyecto2;
 
 import java.text.DecimalFormat;
 
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +12,8 @@ import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
@@ -35,7 +38,7 @@ public class Carrito extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//Hacemos que la aactividad ocupe toda la pantalla
+		//Hacemos que la actividad ocupe toda la pantalla
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -46,63 +49,64 @@ public class Carrito extends Activity {
 		resultado.setTypeface(fuente);
 		TextView titulo = (TextView)findViewById(R.id.titulo);
 		titulo.setTypeface(fuente);
-			vacia=(Button)findViewById(R.id.vaciar);
-			escan=(Button)findViewById(R.id.escanear);
-		  
-			//Llamamos a la actividad que lee los codigos de barras y los guarda en la base de datos del dispositivo
-		    escan.setOnClickListener(new OnClickListener() {
+		
+		vacia=(Button)findViewById(R.id.vaciar);
+		escan=(Button)findViewById(R.id.escanear);
+				  
+		//Llamamos a la actividad que lee los codigos de barras y los guarda en la base de datos del dispositivo
+		escan.setOnClickListener(new OnClickListener() {
 				
-				@Override
-				public void onClick(View arg0) {
-					Intent intent = new Intent(Carrito.this, Lector.class);
-					startActivity(intent);
-				}
-			});
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent(Carrito.this, Lector.class);
+				startActivity(intent);
+			}
+		});
 		    
-		    //Vaciamos la lista completamente
-		    vacia.setOnClickListener(new OnClickListener() {
+		//Vaciamos la lista completamente
+		vacia.setOnClickListener(new OnClickListener() {
 				
-				@Override
-				public void onClick(View arg0) {
+			@Override
+			public void onClick(View arg0) {
 					
-					String borra = "DELETE FROM Milista";
+				String borra = "DELETE FROM Milista";
 					
-					SQLiteDatabase db=base.getWritableDatabase();
-                    db.execSQL(borra);
-                    Intent intent = new Intent(Carrito.this, Carrito.class);
-					startActivity(intent);
-				}
-			});
+				SQLiteDatabase db=base.getWritableDatabase();
+                db.execSQL(borra);
+                Intent intent = new Intent(Carrito.this, Carrito.class);
+                startActivity(intent);
+			}
+		});
 		    	    
-				
-		    ListView listView = (ListView)findViewById(R.id.LstOpciones);
+		
+		ListView listView = (ListView)findViewById(R.id.LstOpciones);
 		    
-		    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      			public void onItemClick(AdapterView<?> parent, android.view.View v, int position, long id){
+		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      		public void onItemClick(AdapterView<?> parent, android.view.View v, int position, long id){
       				
-      				Intent intent = new Intent(Carrito.this, MostrarProducto.class);
+      			Intent intent = new Intent(Carrito.this, MostrarProducto.class);
     				
-    				Bundle b = new Bundle();
-    				String descripcion = ((Producto)parent.getAdapter().getItem(position)).getDescripcion();
-    				String precio = ((Producto)parent.getAdapter().getItem(position)).getPrecio();
-    				String cantidad = ((Producto)parent.getAdapter().getItem(position)).getCantidad();
-    				String total = ((Producto)parent.getAdapter().getItem(position)).getTotal();
+    			Bundle b = new Bundle();
+    			String descripcion = ((Producto)parent.getAdapter().getItem(position)).getDescripcion();
+    			String precio = ((Producto)parent.getAdapter().getItem(position)).getPrecio();
+    			String cantidad = ((Producto)parent.getAdapter().getItem(position)).getCantidad();
+    			String total = ((Producto)parent.getAdapter().getItem(position)).getTotal();
     				    				
-    				b.putString("Descripcion", descripcion);
-    				b.putString("Precio", precio);
-    				b.putString("Cantidad", cantidad);
-    				b.putString("Total", total);
+    			b.putString("Descripcion", descripcion);
+    			b.putString("Precio", precio);
+    			b.putString("Cantidad", cantidad);
+    			b.putString("Total", total);
     				
     				  				
-    				intent.putExtras(b);
+    			intent.putExtras(b);
     				
     				
-    				if(position > 0)
+    			if(position > 0)
     				startActivityForResult(intent, CODIGO_RESPUESTA);
-      			}
+      		}
 
 				      			
-      		});
+      	});
 	
 	        
         try 
@@ -152,7 +156,7 @@ public class Carrito extends Activity {
        
                
         
-        //Hago la suma de los totales individuales y la muestro por pantalla
+        //Obtengo de la db la suma de los totales individuales y la muestro por pantalla
      	 double columntotal = 0;
        	 SQLiteDatabase db=base.getReadableDatabase();
        	 Cursor cursor1 = db.rawQuery("SELECT SUM(total) FROM Milista", null);
@@ -225,6 +229,33 @@ public class Carrito extends Activity {
                 }
             }
     }
+	
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item){
+		switch (item.getItemId()){
+		case R.id.ayuda:
+			Intent intent = new Intent(Carrito.this, Ayuda.class);
+			startActivity(intent);
+			return true;
+		case R.id.acercade:
+			Intent intent1 = new Intent(Carrito.this, Acercade.class);
+			startActivity(intent1);
+			return true;
+		case R.id.salir:
+			System.exit(0);
+			return true;	
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
 	
 
 }

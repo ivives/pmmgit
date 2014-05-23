@@ -6,46 +6,50 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#CACFE0" >
+    android:background="#FFFFCC" >
 
      <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:text="@string/descripcion" />
+        android:text="@string/descripcion"
+        android:textSize="20dp" />
 
-    <EditText
+    <TextView
         android:id="@+id/descripcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/textView1"
-        android:layout_marginTop="10px"
+        android:layout_marginTop="10dp"
 		android:inputType="none"
         android:ems="15"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:background="#FFFFCC" />
     
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/descripcion"
+        android:textSize="20dp"
         android:text="@string/precio" />
 
-    <EditText
+    <TextView
         android:id="@+id/precio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView4"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10px"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="none"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:background="#FFFFCC" />
     
      <TextView
         android:id="@+id/textView2"
@@ -53,8 +57,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/precio"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20px"
-        android:text="@string/cantidad" />
+        android:layout_marginTop="20dp"
+        android:text="@string/cantidad"
+        android:textSize="20dp" />
 
     <EditText
         android:id="@+id/cantidad"
@@ -62,10 +67,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10px"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="number"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:background="#FFFFCC" >
          <requestFocus />
         
     </EditText>
