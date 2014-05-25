@@ -41,7 +41,6 @@ public class Carrito extends Activity {
 		//Hacemos que la actividad ocupe toda la pantalla
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
 		setContentView(R.layout.activity_carrito);
 		Typeface fuente = Typeface.createFromAsset(getAssets(), "gloriahallelujah.ttf");
 		final CreaBase base = new CreaBase(this,"dbase",null,1);

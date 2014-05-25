@@ -182,7 +182,12 @@ private AlertDialog showDownloadDialog() {
 					int cantidad = 1;
 					double total = douPrecio * cantidad;
       
-					String valor = "INSERT INTO Milista VALUES  ('"+strCodigo+"', '"+strDescripcion+"', '"+douPrecio+"', '"+cantidad+"','"+total+"')";
+					String valor = "INSERT INTO Milista VALUES  ("
+															+ "'"+strCodigo+"', "
+															+ "'"+strDescripcion+"',"
+															+ " '"+douPrecio+"',"
+															+ " '"+cantidad+"',"
+															+ "'"+total+"')";
 					
 					 SQLiteDatabase db=base.getWritableDatabase();
 	                    db.execSQL(valor);
